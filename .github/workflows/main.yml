@@ -24,7 +24,7 @@ jobs:
       - name: Install NPM Dependencies
         run: npm install --force
 
-      - name: Build Angular Project
+      - name: Build Angular Project1122222
         run: ng build --configuration=production
   
       - name: Tar dist files 
