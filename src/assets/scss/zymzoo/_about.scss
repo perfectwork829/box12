@@ -1,0 +1,101 @@
+/*
+-----------------------------------------------------------------------
+	About CSS
+-----------------------------------------------------------------------
+*/
+.about-area {
+	padding-top: 120px;	
+  &.about-default-area {  	
+  	@media #{$lg-device} {
+  		padding: 60px 0;
+  	}
+  	@media #{$md-device} {
+  		padding: 60px 0 0;
+  	}
+  	@media #{$xs-device} {
+  		padding: 30px 0 0;
+  	}
+		.about-container{
+			display: flex;
+			justify-content: center;
+			margin-top: 45px;
+			text-align: center;
+			.about-body-container{			
+				.icon-box {
+					padding: 30px;
+					min-height: 313px;
+					.icon{
+						border: 3px solid #b09a65;
+						border-radius: 50%;
+						padding: 20px;
+						svg{
+							height: 70px;
+							fill: $icon-color;
+							color: $icon-color;
+							border-color: $icon-color;
+						}
+					}				
+				}
+			}
+		}
+				
+    .section-title {
+      .title {
+        margin-bottom: 24px;
+        color: $white;
+      }
+    }
+		.thumb {
+			position: relative;
+			background-color: $theme-color-text;
+			img{
+				opacity: 0.9;
+			}
+			@media #{$md-device} {
+				display: inline-block;
+			}
+			@media #{$sm-device} {				
+				justify-content: center;
+				display: flex;
+			}
+			&:before {
+				// content: url('../../img/icons/5.png');
+				position: absolute;
+				top: 39%;
+				left: 15%;
+			}
+			&:after {
+				// content: url('../../img/icons/5.png');
+				position: absolute;
+				bottom: 7%;
+		    right: 16%;
+		    @media #{$md-device} {
+		    	right: 5%;
+		    }
+			}
+		}
+  }
+  
+}
+
+
+html[dir="rtl"]{
+  .about-list {
+    ul {
+      li {
+        &:before {
+          margin-right: 0;
+          margin-left: 11px;
+        }
+      }
+    }
+  }
+  .btn-play-box {
+    .btn-play {
+      img {
+        margin-right: 0;
+        margin-left: 12px;
+      }
+    }
+  }
+}

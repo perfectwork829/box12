@@ -1,0 +1,158 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "box12": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "",
+      "sourceRoot": "src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/box12",
+            "index": "src/index.html",
+            "main": "src/main.ts",
+            "polyfills": [
+              "zone.js"
+            ],
+            "tsConfig": "tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "src/favicon.ico",
+              "src/assets"
+            ],
+            "styles": [
+              "src/assets/css/animate.css",
+              "src/assets/css/pe-icon-7-stroke.min.css",
+              "src/assets/css/arabic-font.css",
+              "src/assets/css/line-awesome.min.css",
+              "src/assets/css/font-awesome.min.css",
+              "src/assets/css/aos.css",
+              "@fancyapps/ui/dist/fancybox/fancybox.css",              
+              "src/assets/css/slicknav.css",
+              "./node_modules/swiper/swiper-bundle.css",
+              "src/assets/css/swiper.css",
+              "src/assets/css/slick.css",
+              "src/assets/css/flexslider.css",
+              "src/assets/css/bootstrap.css",
+              "src/assets/css/bootstrap-icons.css",
+              "node_modules/ngx-bootstrap/datepicker/bs-datepicker.css",
+              "src/styles.scss"
+            ],
+            "scripts": [
+              "src/assets/js/modernizr.js",
+              "node_modules/jquery/dist/jquery.min.js",
+              "src/assets/js/jquery-migrate.js",
+              "src/assets/js/popper.min.js",
+              "src/assets/js/jquery.appear.js",
+              "src/assets/js/aos.min.js",
+              "src/assets/js/jquery.slicknav.js",
+              "src/assets/js/jquery.countdown.min.js",
+              "src/assets/js/tippy.all.min.js",
+              "src/assets/js/isotope.pkgd.min.js",
+              "src/assets/js/vivus.js",
+              "src/assets/js/parallax.min.js",
+              "src/assets/js/slick.min.js",
+              "src/assets/js/wow.min.js",
+              "src/assets/js/jquery-zoom.min.js",
+              "src/assets/js/swiper.js",
+              "src/assets/js/jquery.flexslider.js",
+              "src/assets/js/bootstrap.bundle.min.js",
+              "src/assets/js/custom.js"
+            ],
+            "allowedCommonJsDependencies": [
+              "bs-stepper",
+              "sweetalert2"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ],
+              "baseHref": "/",
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "4mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "100kb"
+                }
+              ]
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "box12:build:production"
+            },
+            "development": {
+              "browserTarget": "box12:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "box12:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ],
+            "tsConfig": "tsconfig.spec.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "src/favicon.ico",
+              "src/assets"
+            ],
+            "styles": [
+              "src/styles.scss"
+            ],
+            "scripts": []
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "analytics": false
+  }
+}

@@ -1,0 +1,254 @@
+/*
+-----------------------------------------------------------------------
+	Profile CSS
+-----------------------------------------------------------------------
+*/
+.profile-container{	
+	position: relative;
+	text-align: center;
+	max-width: 1075px;
+	width: 100%;	
+	image-cropper{
+		// display: none;
+		visibility: hidden;
+		position: absolute;
+	}
+	.tinySubtitle-size{
+		font-size: 20px;
+		color: $theme-color-text;
+	}
+	.inner-wrap{
+		background-color: $theme-color-white;
+	}
+	.cursor-pointer{
+		background-color: $theme-color;
+    display: none;
+		width: 29px;
+    border-radius: 50%;
+    border: 2px solid white;
+    height: 29px;
+    align-items: center;    
+    color: $theme-color-text;           
+    position: absolute;
+    bottom: 12px;
+		right: 0;
+	}
+	.profile-photo{
+		// background-color: white;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    width: 150px;
+    height: 150px;
+    position: relative;
+		background-image: url(../../img/manavatar.png);
+    border: 4px solid $theme-color;    
+		border-radius: 50%;
+		img{
+			border-radius: 50%;
+		}
+		&:hover{
+			.edit-btn{
+				display: block;				
+			}
+		}
+	}
+	.profile-name{
+		font-size: 28px;
+		color: $theme-color-primary;
+		font-weight: $font-weight-semi-bold;
+	}
+	.profile-email{
+		font-size: 16px;
+		color: $theme-color-text;
+	}
+	.countdown-value{
+		// color: #00FF00;
+		color: #ff0606;
+	}
+}
+.profile-item{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	min-height: 160px;
+	background-color: $theme-color-white;
+	position: relative;
+	padding: 31px 10px 42px 10px;
+	cursor: pointer;
+	.profile-item-title{		
+		border-bottom: 1px solid $theme-color;
+		h5{
+			font-family: ArabicRegular;
+			font-size: 16px;
+			color: $theme-color-primary;
+			font-weight: 400;
+			position: relative;
+			transition: 0.3s;
+			-webkit-transition: 0.3s;
+			-moz-transition: 0.3s;
+			-ms-transition: 0.3s;
+			-o-transition: 0.3s;						
+			padding: 0 12px;
+    	margin-bottom: 5px;
+			// &:before{
+			// 	bottom: -12px;
+			// 	background-color: $theme-color;
+			// 	content: "";
+			// 	position: absolute;
+			// 	width: 100%;
+			// 	height: 1px;
+			// 	transition: 0.3s;
+			// 	-webkit-transition: 0.3s;
+			// }
+		}
+	}
+	&:hover{
+		.profile-item-title{
+			h5{
+				color: $theme-color;
+			}
+		}
+	}
+}
+
+.profile_icon{
+	// clip-path: polygon(0% 15px, 15px 0%, 100% 0%, 100% 0px, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0px 100%, 0% 100%);	
+	margin-top: 30px;
+	.pdb_child{
+		// clip-path: polygon(1px 15px, 15px 1px, calc(100% - 1px) 1px, calc(100% - 1px) 1px, calc(100% - 1px) calc(100% - 15px), calc(100% - 15px) calc(100% - 1px), 1px calc(100% - 1px), 1px calc(100% - 1px));
+		background-color: $theme-color-white;
+		span{
+			width: 54px;
+			height: 54px;
+			background-repeat: no-repeat;
+			background-position: center;
+			background-size: 50% 39%;
+			filter: invert(32%) sepia(39%) saturate(281%) hue-rotate(3deg) brightness(83%) contrast(81%);
+			&.icon-active-person{
+				background: url(../../img/icons/active-person.svg) no-repeat center;				
+			}
+			&.icon-active-marker{
+				background: url(../../img/icons/active-marker.svg) no-repeat center;								
+			}
+			&.icon-active-two-person{
+				background: url(../../img/icons/active-twoperson.svg) no-repeat center;				
+			}
+			&.icon-active-cash{
+				background: url(../../img/icons/active-cash.svg) no-repeat center;				
+			}
+			&.icon-receiver{
+				background: url(../../img/icons/active-receiver.svg) no-repeat center;				
+			}
+			&.icon-setting-branch{
+				background: url(../../img/icons/active-branch.svg) no-repeat center;				
+			}
+		}
+	}	
+}
+
+.personal-container{
+	padding-top: 120px;
+	label{
+		color: $black-999;
+	}
+	.form-group{
+		.btn-theme{
+			border-radius: 27.5px;
+			color: #fff;
+			font-size: 14px;
+			font-weight: 600;
+			width: 149px;
+			height: 55px;
+			line-height: 55px;
+			padding: 0;
+			text-transform: uppercase;
+		}
+	}
+}
+.referral-code{
+	.btn-theme{
+		border-radius: 27.5px;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    width: 149px;
+    height: 55px;
+    line-height: 55px;
+    padding: 0;
+    text-transform: uppercase;
+		&:hover{
+			background-color: #252525;
+    	border-color: #252525;
+		}
+	}
+}
+.branches-container{
+	.pbd-parent{
+		// clip-path: polygon(0% 0px, 0px 0%, calc(100% - 15px) 0%, 100% 15px, 100% 100%, 100% 100%, 15px 100%, 0% calc(100% - 15px));
+		background-color: #ffffff35;		
+		.pbd-child{
+			// clip-path: polygon(1px 1px, 1px 1px, calc(100% - 15px) 1px, calc(100% - 1px) 15px, calc(100% - 1px) calc(100% - 1px), calc(100% - 1px) calc(100% - 1px), 15px calc(100% - 1px), 1px calc(100% - 15px));
+			background-color: $theme-color-white;
+			.club-card{
+				padding: 14px 16px;
+				display: flex;
+				flex-direction: column;
+				margin-top: 16px;
+				.club_name{
+					color: $theme-color-text;
+					text-align: left;
+					font-size: 20px;
+					margin-bottom: 6px;
+				}
+				.club_address{
+					color: $theme-color-text;
+					text-align: left;
+					font-size: 18px;
+					margin-bottom: 16px;
+				}
+				.club-button-group{
+					width: fit-content;					
+				}
+			}
+		}
+	}	
+}
+.billstatement-container{
+	padding-top: 120px;
+	padding-bottom: 80px;
+	.invoice-card-inner-wrap{
+		color: rgba(250, 250, 250, 0.968627451);
+		padding: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+		background-color: $theme-color-white;
+		// border: 1px solid rgba(255, 255, 255, 0.2078431373);
+		// border-radius: 10px;
+		.status-bar{
+			margin-bottom: 16px;
+			width: 100%;
+			display: flex;
+			justify-content: space-between;			
+		}
+		.info-bar{
+			display: flex;
+			width: 100%;
+			justify-content: space-between;
+			flex-direction: row;
+			.info{
+				display: flex;
+				flex-direction: column;
+				justify-content: space-between;
+				text-align: left;
+			}
+			.info-label{
+				color: $theme-color-text;
+			}
+			.info-value{
+				color: $theme-color-text;
+			}
+		}
+	}		
+}

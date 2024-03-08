@@ -1,0 +1,6 @@
+<main class="main-content">  
+  <app-spinner></app-spinner>  
+  <app-subscriptions [config]="config" [memberships]="slist" (onreactivateSubscription)="reactivateSubscription($event)"
+                    (onsuspendSubscription)="suspendSubscription($event)" (oncancelSubscription)="cancelSubscription($event)">
+  </app-subscriptions>
+</main>

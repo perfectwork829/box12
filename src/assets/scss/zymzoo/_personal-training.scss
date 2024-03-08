@@ -1,0 +1,73 @@
+/*
+-----------------------------------------------------------------------
+  Trainers CSS
+-----------------------------------------------------------------------
+*/
+.personal-training-container{
+  padding-top: 120px;  
+  padding-bottom: 80px;  
+  @media #{$xl-device} {
+    padding-bottom: 30px;
+  }
+  @media #{$sm-device} {
+    padding-bottom: 30px;
+  }
+  .section-title{
+    @media #{$xl-device} {
+      margin-bottom: 48px;
+      margin-top: 48px;
+    }
+    @media #{$sm-device} {
+      margin-bottom: 5px;
+      margin-top: 55px;
+    }    
+  }
+  @media #{$xxs-device} {
+    padding-top: 60px;
+  }
+ .date-box{
+  min-width: 320px;
+  margin: 0 auto;
+  .inputbox-label{
+    color: $black-999;
+   }
+ }
+ .session-item{
+  cursor: pointer;  
+  transition: 0.3s, background-position 0.3s 0.3s;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-left: 20px solid $theme-color;
+  &:hover{
+    transition: 0.3s, background-size 0.3s 0.3s;
+    border-left: 50px solid $theme-color;
+    .session-info{
+      p{
+        color: $theme-color-text;
+      }
+    }
+  }
+  .session-card{
+    padding: 12px 12px 12px 12px;
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    .trainer-photo{
+      width: 80px;
+      height: 80px;
+      background-color: $white-fe;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      border-radius: 10px;
+      box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
+    }
+    .session-info{
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      margin-left: 20px;
+    }
+   }
+ } 
+}

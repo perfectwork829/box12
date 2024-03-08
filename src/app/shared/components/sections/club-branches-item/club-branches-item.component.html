@@ -1,0 +1,21 @@
+<!--== Start Club Branche Item Area ==-->
+<div class="pbd-parent boxshadow-custom2">
+  <div class="pbd-child">
+    <div class="club-card">
+      <p class="club_name">
+        <span class="en-text gdTColor" *ngIf="bLangFlag">{{club?.name_en}}</span>
+        <span class="ar-text gdTColor" *ngIf="!bLangFlag">{{club?.name_ar}}</span>
+      </p>
+      <p class="club_address" *ngIf="bLangFlag">{{club?.address1}}</p>
+      <p class="club_address" *ngIf="!bLangFlag">{{club?.address2}}</p>      
+      <div class="club-button-group">
+        <div class="pbd-parent">
+          <div class="pbd-child">
+            <a class="btn button" (click)="loadClubDetail($event,club)">{{'Club_details'|translate}}</a>
+          </div>
+        </div>        
+      </div>
+    </div>
+  </div>
+</div>
+<!--== End Club Branche Item Area ==-->

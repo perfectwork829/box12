@@ -1,0 +1,94 @@
+/*
+-----------------------------------------------------------------------
+	Branches CSS
+-----------------------------------------------------------------------
+*/
+.branches-container{
+	&.membership{
+		padding: 120px 0 10px;
+	}
+	.club-detail{		
+		.club-info{
+			.left{
+				&.pbd-parent{
+					// clip-path: polygon(0% 0px, 0px 0%, calc(100% - 10px) 0%, 100% 10px, 100% 100%, 100% 100%, 10px 100%, 0% calc(100% - 10px));
+					background: $theme-color-white;
+					.pbd-child{
+						// clip-path: polygon(1px 1px, 1px 1px, calc(100% - 1px) 1px, calc(100% - 1px) 1px, calc(100% - 1px) calc(100% - 1px), calc(100% - 1px) calc(100% - 1px), 1px calc(100% - 1px), 1px calc(100% - 1px)) !important;
+						background: $theme-color-white;
+						.item-img{
+							width: 50px;
+							height: 50px;
+							background-repeat: no-repeat;
+							background-position: center;
+							background-size: 50% 50%;
+							filter: invert(32%) sepia(39%) saturate(281%) hue-rotate(3deg) brightness(83%) contrast(81%);
+							&.active-stand-person-icon{
+								background: url(../../img/icons/active-stand-person.svg) no-repeat center;				
+							}
+							&.active-branch-icon{
+								background: url(../../img/icons/active-branch.svg) no-repeat center;				
+							}
+							&.active-active-calendar-icon{
+								background: url(../../img/icons/active-calendar.svg) no-repeat center;				
+							}
+						}
+					}
+				}
+			}		
+			display: flex;
+			flex-wrap: wrap;
+			.item{
+				display: flex;
+				margin-bottom: 16px;
+				flex-direction: row;
+			}
+			.item-desc{
+				display: flex;
+				flex-direction: column;
+				margin: 0 12px;
+				.label{
+					font-size: 12px;
+					color: $theme-color-text;
+				}
+				.value{
+					font-size: 14px;
+					color: $theme-color-text;
+				}
+			}
+		}
+		.club-address{
+			border-top: 1px solid #FFFFFF1F;	
+		}
+		.club-email{
+			border-top: 1px solid #FFFFFF1F;	
+		}
+		.btn-club{
+			border-top: 1px solid #FFFFFF1F;	
+			.btn-theme{				
+				border-radius: 27.5px;
+				color: #fff;
+				font-size: 14px;
+				font-weight: 600;
+				width: 149px;
+				height: 55px;
+				line-height: 55px;
+				padding: 0;
+				text-transform: uppercase;
+				&:hover{
+					background-color: #252525;
+					border-color: #252525;
+				}
+			}	
+		}				
+	}
+	.comment-wrap{
+		.comment-box{
+			height: 227px;
+		}
+	}
+	.btn-theme{
+		width: 160px;
+		color: $white-fe;
+	}	
+}

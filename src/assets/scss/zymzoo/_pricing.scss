@@ -1,0 +1,200 @@
+/*
+-----------------------------------------------------------------------
+  Pricing CSS
+-----------------------------------------------------------------------
+*/
+
+.pricing-area {
+  &.pricing-default-area {
+    @media #{$lg-device} {
+      padding: 90px 0;
+    }
+    @media #{$sm-device} {
+      padding: 60px 0 10px 0;
+    }
+    .container {
+      @media (min-width:992px) {
+        //max-width: 900px;
+      }
+    }
+    .swiper-slide{
+      box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;;
+      min-height: 70px;
+    }
+  }
+}
+
+.packages{
+  padding: 125px 0 0;
+}
+
+.membership{
+  padding: 120px 0 125px;
+  @media #{$sm-device} {
+    padding-bottom: 10px;
+  }
+}
+
+.pricing-item {
+  //box-shadow: 0px 13px 29px 0px rgba(0, 0, 0, 0.11);
+  &.selected-signup-box{
+    box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+  }
+  &.unselected-signup-box{
+    box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px, rgba(0, 0, 0, 0.05) 0px 1px 1px 0px
+  }
+  background-color: $white;
+  position: relative;
+  padding: 31px 34px 42px 33px;
+  margin-top: 10px;
+  @media #{$md-device} {
+    padding: 31px 15px 42px;
+  }
+  @media #{$sm-device} {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 480px;
+  }
+  .pricing-title {
+    text-transform: uppercase;
+    padding-bottom: 10px;
+    h5 {
+      font-family: $font-current-theme1;
+      font-size: 14px;      
+      font-weight: $font-weight-normal;
+      //letter-spacing: 2px;
+      position: relative;
+      @include transition(.3s);
+      &:before {
+        bottom: -12px;
+        background-color: $theme-color;
+        content: "";
+        position: absolute;
+        width: 50px;
+        height: 1px;
+        @include transition(.3s);
+      }
+    }
+  }
+  .pricing-amount {
+    margin-bottom: 20px;
+    margin-top: 20px;
+    h2 {
+      text-align: center;
+      font-size: 42px;
+      color: $theme-color;
+      letter-spacing: -.25px;
+      margin-bottom: 0;
+      @include transition(.3s);
+    }
+    h3 {
+      text-align: center;
+      color: $theme-color-primary;
+      font-family: $font-current-theme1;
+      font-size: 14px;
+      font-weight: $font-weight-normal;
+      @include transition(.3s);
+    }
+  }
+  .pricing-content {
+    .pricing-list {
+      margin-bottom: 24px;
+      li {
+        color: $black-999;
+        font-size: 14px;
+        font-weight: $font-weight-normal;
+        margin-bottom: 11px;
+        @media #{$md-device} {
+          font-size: 13px;
+        }
+        &:before {
+          border: 1px solid $theme-color;
+          border-radius: 50%;
+          content: "";
+          display: inline-block;
+          margin-right: 11px;
+          position: relative;
+          width: 12px;
+          height: 12px;
+        }
+        &:first-child {
+          &:before {
+            display: none;
+          }
+        }
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+  .pricing-footer {
+    //height: 40px;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    gap: 20px;
+    @include transition(all .4s ease-in-out);
+    //@media #{$md-device} {
+    //  overflow: hidden;
+    //}
+    //&:before {
+    //  background-color: $theme-color;
+    //  content: "";
+    //  width: 100%;
+    //  height: 1px;
+    //  position: absolute;
+    //  top: 50%;
+    //  right: -34px;
+    //  @include transition(all .4s);
+    //}
+    .pricing-footer-inner {
+      height: 100%;
+      width: 100%;
+      .btn-theme {
+        //left: 0;
+        //position: absolute;
+        @include transition(all .4s ease-in-out);
+      }
+    }
+    .btn-theme, btn-info {
+      border-radius: 20px;
+      font-weight: $font-weight-medium;
+      font-size: 14px;
+      display: inline-block;
+      left: 0;
+      height: 40px;
+      letter-spacing: .10px;
+      line-height: 40px;
+      padding: 0;
+      width: 100%;
+      @include transition(all .3s ease-in-out);
+    }   
+    .btn-question:hover{
+      border-color: $grey_cancel;
+      color: $theme-color;
+    }
+  }
+  &:hover {
+    .pricing-amount {
+      h2 {
+        color: $theme-color-primary;
+      }
+      h3 {
+        color: $theme-color;
+      }
+    }
+  }
+}
+
+html[dir="rtl"]{
+  .pricing-list {
+    li {
+      &:before {
+        margin-right: 0;
+        margin-left: 11px;
+      }
+    }
+  }
+}

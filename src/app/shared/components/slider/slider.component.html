@@ -1,0 +1,41 @@
+<!--== Start Slider Area Wrapper ==-->
+<section class="home-slider-area slider-default">
+  <div class="home-slider-content">
+    <div class="swiper-container home-slider-container">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">          
+          <div class="home-slider-item">            
+            <div class="bg-thumb bg-img" [ngClass]="{'home-page': page==='home', 'acadamy-page': page !== 'home'}"></div>
+            <div class="slider-content-area">
+              <div class="container-fluid">
+                <div class="content">                      
+                  <div class="row">
+                    <div class="col-md mb-sm-3 mb-3">
+                      <div class="inner-content">
+                        <img src="../../../../assets/img/logo-white.png" alt="">
+                        <div class="slider-content">
+                          <span>{{title_sub | translate }}</span>
+                          <h1 *ngIf="page==='home'">{{title_main | translate}}</h1>                        
+                          <h2 *ngIf="page==='academy'" class="font-size-90">{{'KIDS ACADEMY' | translate}}</h2>
+                          <p class="text-body-color slider-description">{{description}}</p>
+                          <a class="button btn-theme" (click)="onSignUp()">{{'Join Us' | translate}}</a>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- <div class="col-md mb-sm-3 mb-xs-3">
+                      <div class="content-image">
+                        <img [src]="image" alt="" class="h-50" data-xblocker="passed" style="visibility: visible;">
+                      </div>
+                    </div> -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- End Slide Item -->
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!--== End Slider Area Wrapper ==-->

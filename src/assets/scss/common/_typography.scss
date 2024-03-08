@@ -1,0 +1,297 @@
+/*
+-----------------------------------------------------------------------
+  Typography CSS
+-----------------------------------------------------------------------
+*/
+
+body {
+  color: $body-color;
+  @include font-size($font-size-base);
+  font-family: $body-font;
+  font-weight: $font-weight-normal;
+  line-height: $body-line-height;
+  margin: 0;
+  overflow-x: hidden;
+  -ms-word-wrap: break-word;
+  word-wrap: break-word;
+}
+
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  color: $theme-color-primary;
+  font-family: $heading-font;
+  font-weight: $heading-font-weight;
+  line-height: $heading-line-height;
+  margin: 0;
+  padding: 0;
+  color: $theme-color-primary;
+  text-transform: uppercase;
+}
+
+h1 {
+  font-size: 56px;
+  line-height: 65px;
+  font-weight: $font-weight-black;
+  position: relative;
+  margin-bottom: 20px;
+  font-family: $heading-font;
+  @media #{$lg-device} {
+    font-size: 50px;
+    line-height: 60px;
+  }
+  @media #{$md-device} {
+    font-size: 45px;
+    line-height: 58px;
+  }
+  @media #{$sm-device} {
+    font-size: 40px;
+    line-height: 52px;
+  }
+  @media #{$xs-device} {
+    font-size: 38px;
+    line-height: 48px;
+  }
+}
+
+h2 {
+  font-size: 42px;
+  font-weight: $font-weight-bold;
+  line-height: 55px;
+  margin-bottom: 20px;
+  font-family: $heading-font;
+  @media #{$lg-device} {
+    font-size: 38px;
+    line-height: 50px;
+  }
+  @media #{$md-device} {
+    font-size: 33px;
+    line-height: 45px;
+  }
+  @media #{$sm-device} {
+    font-size: 28px;
+    line-height: 40px;
+  }
+  @media #{$xs-device} {
+    font-size: 25px;
+    line-height:35px;
+  }
+}
+
+h3 {
+  font-size: 28px;
+  font-weight: $font-weight-bold;
+  font-family: $heading-font;
+}
+
+h4 {
+  font-size: 22px;
+  font-weight: $font-weight-bold;
+  font-family: $heading-font;
+}
+
+h5 {
+  font-size: 20px;
+  font-weight: $font-weight-semi-bold;
+  line-height: 22px;
+  font-family: $secondary-font;
+}
+
+h6 {
+  font-size: 18px;
+}
+
+a {
+  text-decoration: none;
+  color: #464646;
+}
+
+a:hover {
+  color: #333;
+}
+
+p {  
+  font-weight: 300;
+  font-size: 20px;
+  line-height: 1.45em;
+}
+.info{
+  span{
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 1.45em;
+  }
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+}
+ul li {
+  list-style: none;
+}
+
+img {
+  width: 100%;
+}
+
+a {
+  color: $theme-color;
+  text-decoration: none;
+  @include transition(.3s);
+
+  &:hover,
+  &:active,
+  &:focus {
+    box-shadow: none;
+    color: darken($theme-color, 15%);
+    outline: none;
+    text-decoration: none;
+  }
+
+  img {
+    border: none;
+  }
+}
+
+.btn:focus {
+  box-shadow: none;
+}
+
+.button {  
+  font-size: 16px;
+  text-transform: uppercase;
+  fill: $theme-color;
+  color: $theme-color;
+  background-color: rgba(0, 0, 0, 0);
+  border-style: solid;
+  border-width: 1px 1px 1px 1px;
+  border-color: $theme-color;
+  border-radius: 0px 0px 0px 0px;
+  padding: 8px 25px 8px 25px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button:hover {  
+  color: $theme-color-primary;
+  border-color: $theme-color-primary;
+}
+
+.btn_buy_button{
+  font-size: 20px;
+  text-transform: uppercase;  
+  color: $white;
+  background-color: $theme-color;
+  border-style: solid;
+  border-width: 1px 1px 1px 1px;
+  border-color: $theme-color;
+  border-radius: 0px 0px 0px 0px;
+  padding: 13px 40px 13px 40px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  width: 100%;
+  border-radius: 6px;
+}
+
+.btn_buy_button:hover {  
+  color: $theme-color;
+  border-color: $theme-color;
+  background-color: transparent;
+}
+
+.btn_other_lang{
+  font-size: 20px;
+  text-transform: uppercase;  
+  color: $theme-color;
+  background-color: $white;
+  border-style: solid;
+  border-width: 1px 1px 1px 1px;
+  border-color: $theme-color;
+  border-radius: 0px 0px 0px 0px;
+  padding: 13px 40px 13px 40px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  width: 100%;
+  border-radius: 6px;
+  &:hover{
+    color: $theme-color-primary;
+    border-color: $theme-color-primary;
+    background-color: $white;
+  }
+}
+
+p {
+  color: $theme-color-text;
+  margin-bottom: 30px;
+
+  &:last-child{
+    margin-bottom: 0;
+  }
+}
+
+:active,
+:focus {
+  box-shadow: none;
+  outline: none !important;
+}
+
+::selection {
+  background: $theme-color;
+  color: $white;
+  text-shadow: none;
+}
+
+::-moz-selection {
+  background: $theme-color; /* Firefox */
+  color: $white;
+  text-shadow: none;
+}
+
+::-webkit-selection {
+  background: $theme-color; /* Safari */
+  color: $white;
+  text-shadow: none;
+}
+
+img { max-width: 100%; }
+
+iframe { border: none !important; }
+
+textarea, input {
+  &:focus, &:active {
+    outline: none;
+  }
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+
+  li {
+    list-style: none;
+  }
+}
+
+pre,
+ul,
+ol,
+dl,
+dd,
+blockquote,
+address,
+table,
+fieldset { 
+  margin-bottom: 30px;
+}
+
+table p {
+  margin-bottom: 0;
+}

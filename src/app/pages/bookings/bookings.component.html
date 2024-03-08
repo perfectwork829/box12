@@ -1,0 +1,6 @@
+<main class="main-content">    
+  <app-spinner></app-spinner>  
+  <app-booking-items [appointmentlist]="appointmentlist" [sessionlist]="sessionlist" 
+                    (cancelBooking)="cancelBooking($event)" (rateBooking)="rateBooking($event)">
+  </app-booking-items>
+</main>

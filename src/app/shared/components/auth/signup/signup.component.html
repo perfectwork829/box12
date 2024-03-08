@@ -1,0 +1,821 @@
+<!--== Start Signup modal Wrapper ==-->
+<div class="modal-header">
+  <h4 class="modal-title text-primary">
+    <img class="logo-main" src="assets/img/logo.png" alt="Logo" />
+  </h4>
+  <button type="button" class="btn btn-dark" (click)="onClose()" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <section class="horizontal-wizard">
+    <div id="stepper" class="bs-stepper horizontal-wizard-example">
+      <div class="bs-stepper-header" *ngIf="stepType==='signup'">
+        <div class="step" data-target="#gender-selection">
+          <button class="step-trigger">
+            <span class="bs-stepper-box">1</span>
+            <span class="bs-stepper-label">
+                <span class="bs-stepper-title">{{'Gender' | translate}}</span>
+              </span>
+          </button>
+        </div>
+        <div class="line"><i class="fa fa-chevron-right font-medium-2"></i></div>
+        <div class="step" data-target="#branch-selection">
+          <button class="step-trigger">
+            <span class="bs-stepper-box">2</span>
+            <span class="bs-stepper-label">
+                <span class="bs-stepper-title">{{'Club' | translate}}</span>
+              </span>
+          </button>
+        </div>
+        <div class="line"><i class="fa fa-chevron-right font-medium-2"></i></div>
+        <div class="step" data-target="#product">
+          <button class="step-trigger">
+            <span class="bs-stepper-box">3</span>
+            <span class="bs-stepper-label">
+                <span class="bs-stepper-title">{{'Products' | translate}}</span>
+              </span>
+          </button>
+        </div>
+        <div class="line"><i class="fa fa-chevron-right font-medium-2"></i></div>
+        <div class="step" data-target="#user-information">
+          <button class="step-trigger">
+            <span class="bs-stepper-box">4</span>
+            <span class="bs-stepper-label">
+                <span class="bs-stepper-title">{{'User Information' | translate}}</span>
+              </span>
+          </button>
+        </div>
+        <div class="line"><i class="fa fa-chevron-right font-medium-2"></i></div>
+        <div class="step" data-target="#payment">
+          <button class="step-trigger">
+            <span class="bs-stepper-box">5</span>
+            <span class="bs-stepper-label">
+                <span class="bs-stepper-title">{{'Payment' | translate}}</span>
+              </span>
+          </button>
+        </div>
+      </div>
+
+      <div class="bs-stepper-header" *ngIf="stepType==='product'">
+        <div class="step" data-target="#branch-selection">
+          <button class="step-trigger">
+            <span class="bs-stepper-box">1</span>
+            <span class="bs-stepper-label">
+                <span class="bs-stepper-title">{{'Club' | translate}}</span>
+              </span>
+          </button>
+        </div>
+        <div class="line"><i class="fa fa-chevron-right font-medium-2"></i></div>
+        <div class="step" data-target="#product">
+          <button class="step-trigger">
+            <span class="bs-stepper-box">2</span>
+            <span class="bs-stepper-label">
+                <span class="bs-stepper-title">{{'Products' | translate}}</span>
+              </span>
+          </button>
+        </div>
+        <div class="line"><i class="fa fa-chevron-right font-medium-2"></i></div>
+        <div class="step" data-target="#payment">
+          <button class="step-trigger">
+            <span class="bs-stepper-box">3</span>
+            <span class="bs-stepper-label">
+                <span class="bs-stepper-title">{{'Payment' | translate}}</span>
+              </span>
+          </button>
+        </div>
+      </div>
+
+      <div class="bs-stepper-content">
+        <form (ngSubmit)="(HWForm.form.valid)" #HWForm="ngForm">
+
+          <div id="gender-selection" class="content">
+            <form #genderForm="ngForm">
+              <div class="content-header">
+                <h5 class="mb-0">{{'Gender Selection Options' | translate}}</h5>
+                <small class="text-muted">{{'Please select one' | translate}}:</small>
+              </div>
+              <div class="row">
+                <div class="form-group col-12 text-center">
+                  <input [(ngModel)]="signup.gender" #TDGenderRef="ngModel" required type="text" name="gender" class="d-none" [class.error]="genderForm.submitted && TDGenderRef.invalid"/>
+                  <span *ngIf="genderForm.submitted && TDGenderRef.invalid" class="invalid-form">
+                      <small class="form-text text-danger" *ngIf="TDGenderRef.errors!.required">{{'This field is required!' | translate}}</small>
+                    </span>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="form-group col-md-6 text-center" *ngIf="type==='home'">
+                  <div class="card" [ngClass]='{selected: signup.gender == "male" }' (click)="onGenderSelect('male')">
+                    <div class="card-body p-0 m-0">
+                        <img src="assets/img/gender/male.png">
+                    </div>
+                    <div class="card-footer">
+                     <p>{{'Male' | translate}}</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group col-md-6 text-center" *ngIf="type==='home'">
+                  <div class="card" [ngClass]='{selected: signup.gender == "female" }' (click)="onGenderSelect('female')">
+                    <div class="card-body p-0 m-0">
+                      <img src="assets/img/gender/female.png">
+                    </div>
+                    <div class="card-footer">
+                      <p>{{'Female' | translate}}</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group col-md-12 text-center" *ngIf="type==='academy'">
+                  <div class="card" [ngClass]='{selected: signup.gender == "kids" }' (click)="onGenderSelect('kids')">
+                    <div class="card-body p-0 m-0">
+                      <img src="assets/img/gender/3.png">
+                    </div>
+                    <div class="card-footer">
+                      <p>{{'Kids' | translate}}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row pt-50">
+                <div class="col-12">
+                  <div class="d-flex justify-content-between">
+                    <button (click)="stepperPrevious()" class="btn btn-outline-secondary btn-prev" disabled>
+                      <i class="fa fa-arrow-left align-middle ml-sm-25 mx-2"></i>
+                      <span class="align-middle d-sm-inline-block d-none">{{'Previous' | translate}}</span>
+                    </button>
+                    <button (click)="stepperNext(1, genderForm)" class="btn btn-primary btn-next">
+                      <span class="align-middle d-sm-inline-block d-none">{{'Next' | translate}}</span>
+                      <i class="fa fa-arrow-right align-middle ml-sm-25 mx-2"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+
+          <div id="branch-selection" class="content">
+            <form #branchForm="ngForm">
+              <div class="row mb-20">
+                <div class="col-12">
+                  <div class="card-body">
+                    <div class="mt-4 mb-50 text-center">
+                      <h4 class="pb-0 mb-0">{{'Find club' | translate}}</h4>
+                      <p class="card-text pt-0 mt-0">{{'Select nearby club' | translate}}</p>
+                    </div>
+                    <div class="row">
+                      <div class="col-6 pb-10" *ngFor="let item of branches">
+                        <div class="card {{item.id === branch.id? 'bg-primary':'bgcolor-gray-light' }}" (click)="onBranchSelect(item)">
+                          <div class="card-body item-heading">
+                            <h5 class="text-truncate mb-0">{{ config.isArabic? item.name_ar:item.name_en }}</h5>
+                            <small class="text-body" *ngIf="config.isArabic"> {{item.address2}}</small>
+                            <small class="text-body" *ngIf="!config.isArabic"> {{item.address1}}</small>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="form-group col-12 text-center">
+                  <input [(ngModel)]="signup.default_branch" #TDBranchRef="ngModel" required type="text" name="default_branch" class="d-none" [class.error]="branchForm.submitted && TDBranchRef.invalid"/>
+                  <span *ngIf="branchForm.submitted && TDBranchRef.invalid" class="invalid-form">
+                      <small class="form-text text-danger" *ngIf="TDBranchRef.errors!.required">{{'This field is required!' | translate}}</small>
+                    </span>
+                </div>
+              </div>
+
+              <div class="row" *ngIf="branch.id && branch.location_type">
+                <div class="col-12">
+                  <div class="card">
+                    <div class="card-body">
+                      <div class="row">
+                        <div class="col-md-6 col-sm-12">
+                          <div class="branch-body">
+                            <div class="branch-icon"><i class="fa fa-leaf"></i></div>
+                            <div class="branch-info">
+                              <div class="branch-title">{{'Branch Type' | translate}}</div>
+                              <div class="branch-subtitle">{{branch?.branch_category | translate}}</div>
+                            </div>
+                          </div>
+                        </div>                       
+                        <div class="col-md-6 col-sm-12">
+                          <div class="branch-body">
+                            <div class="branch-icon"><i class="fa fa-calendar"></i></div>
+                            <div class="branch-info">
+                              <div class="branch-title">{{'Launched Date' | translate}}</div>
+                              <div class="branch-subtitle">{{branch?.startup_date}}</div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12">
+                          <div class="branch-body">
+                            <div class="branch-icon"><i class="fa fa-envelope"></i></div>
+                            <div class="branch-info">
+                              <div class="branch-title">{{'Branch Email' | translate}}</div>
+                              <div class="branch-subtitle">{{branch?.email}}</div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12">
+                          <div class="branch-body">
+                            <div class="branch-icon"><i class="fa fa-whatsapp"></i></div>
+                            <div class="branch-info">
+                              <div class="branch-title">{{'Call Branch' | translate}}</div>
+                              <a class="branch-subtitle" href="tel:{{branch.phone}}">{{branch.phone}}</a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+
+              <div class="row pt-50">
+                <div class="col-12">
+                  <div class="d-flex justify-content-between">
+                    <button type="button" (click)="stepperPrevious()" class="btn btn-secondary btn-prev">
+                      <i class="fa fa-arrow-left align-middle ml-sm-25 mx-2"></i>
+                      <span class="align-middle d-sm-inline-block d-none">{{'Previous' | translate}}</span>
+                    </button>
+                    <button (click)="stepperNext(2, branchForm)" class="btn btn-primary btn-next">
+                      <span class="align-middle d-sm-inline-block d-none">{{'Next' | translate}}</span>
+                      <i class="fa fa-arrow-right align-middle ml-sm-25 mx-2"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+
+          <div id="product" class="content">
+            <form #productForm="ngForm">
+              <div class="content-header">
+                <h5 class="mb-0">{{'Our Products' | translate}}</h5>
+                <small class="text-muted">{{'Select Product' | translate}}</small>
+              </div>
+              <input hidden [(ngModel)]="signup.product_id" #TDProductIDRef="ngModel" required type="text" name="product_id" id="product_id"/>
+              <div class="row" *ngIf="!selectedProduct">
+                <div class="col-md-6 text-center">
+                  <div class="card" (click)="onTriggerProduct('subscription')" [ngClass]="{'bg-primary': productType === 'subscription'}">
+                    <div class="card-body text-center">
+                      <p class="font-size-16" [ngClass]="{'text-light ': productType === 'subscription'}">{{'Subscription' | translate}}</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6 text-center">
+                  <div class="card" (click)="onTriggerProduct('session')" [ngClass]="{'bg-primary': productType === 'session'}">
+                    <div class="card-body text-center">
+                      <p class="font-size-16" [ngClass]="{'text-light ': productType === 'session'}">{{'Personal_Training' | translate}}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row pt-50"  *ngIf="productType === 'subscription'">
+                <div class="col-md-12" *ngIf="!selectedProduct; else singleproduct;">                  
+                  <div class="swiper-container subscription-slider-container">
+                    <div class="swiper-wrapper">
+                      <div class="swiper-slide" *ngFor="let product of subscriptions">
+                        <div class="pricing-item" [style.border-radius]="'15px'" [ngClass]="{'selected-signup-box' : product.id === signup.product_id, 'unselected-signup-box': product.id !== signup.product_id}">
+                          <div class="pricing-title">
+                            <h5 class="text-heading-color" [ngClass]="{'custom-color2' : product.id === signup.product_id, 'text-heading-color': product.id !== signup.product_id}">{{config.isArabic? product.arabic_name : product.english_name}}</h5>
+                          </div>
+                          <div class="pricing-amount">
+                            <h2>{{product.amount_after_vat.toFixed(1)}}{{' '}}{{'SAR' | translate}}</h2>
+                            <h3>{{config.isArabic? product.period + ' ' + product.arabic_period_unit : product.period + ' ' + product.period_unit}}</h3>
+                          </div>
+                          <!-- <div class="price_group_unit">
+                            <h3>{{product.amount_after_vat.toFixed(1)}}{{' '}}{{'SAR' | translate}} {{'Total amount' | translate }}</h3>
+                            <h3>{{config.isArabic? product.period + ' ' + product.arabic_period_unit : product.period + ' ' + product.period_unit}}</h3>
+                          </div> -->
+                          <!-- <div class="pricing-content">
+                            <ul class="pricing-list">
+                              <li class="font-size-12" *ngFor="let option of product[config.isArabic? 'arabic_options': 'english_options']">{{option}}</li>
+                            </ul>
+                          </div> -->
+                          <div class="term-condition">                            
+                            <a class="tc-link terms-conditions-btn cursor-pointer" (click)="openProductTermsConditionsDialog(config.isArabic? product.arabic_terms_conditions: product.terms_conditions)">{{'terms_and_conditions1'| translate}}</a> 
+                          </div>
+                          <div class="pricing-footer">
+                            <a class="btn btn-subscribe" (click)="onSelectProduct(product)">{{'Select product' | translate}}</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6" *ngIf="selectedProduct" #singleproduct>                  
+                  <div class="pricing-item" [style.border-radius]="'15px'" [ngClass]="{'bg-black' : selectedProduct.id === signup.product_id, 'bgcolor-gray-light': selectedProduct.id !== signup.product_id}">
+                    <div class="pricing-title">
+                      <h5 class="text-black" [ngClass]="{'text-white' : selectedProduct.id === signup.product_id, 'text-black': selectedProduct.id !== signup.product_id}">{{config.isArabic? selectedProduct.arabic_name : selectedProduct.english_name}}</h5>
+                    </div>
+                    <div class="pricing-amount">
+                      <h2>{{(selectedProduct.amount_after_vat/selectedProduct.period).toFixed(1) }}{{' '}}{{'SAR' | translate}}/{{config.isArabic? selectedProduct.arabic_period_unit : selectedProduct.period_unit}}</h2>
+                      <div class="price_group_unit">
+                        <h3>{{selectedProduct.amount_after_vat.toFixed(1)}}{{' '}}{{'SAR' | translate}} {{'Total amount' | translate }}</h3>
+                        <h3>{{config.isArabic? selectedProduct.period + ' ' + selectedProduct.arabic_period_unit : selectedProduct.period + ' ' + selectedProduct.period_unit}}</h3>
+                      </div>
+                    </div>
+                    <!-- <div class="pricing-content">
+                      <ul class="pricing-list">
+                        <li class="font-size-12" *ngFor="let option of selectedProduct[config.isArabic? 'arabic_options': 'english_options']">{{option}}</li>
+                      </ul>
+                    </div> -->
+                    <div class="term-condition">                      
+                      <a class="tc-link terms-conditions-btn cursor-pointer" (click)="openProductTermsConditionsDialog(config.isArabic? product.arabic_terms_conditions: product.terms_conditions)">{{'terms_and_conditions1'| translate}}</a> 
+                    </div>
+                    <div class="pricing-footer">
+                      <a class="btn btn-subscribe" (click)="onSelectProduct(selectedProduct)">{{'Select product' | translate}}</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row pt-50"  *ngIf="productType === 'session'">
+                <div class="col-md-12">
+                  <div class="swiper-container session-slider-container">
+                    <div class="swiper-wrapper">
+                      <div class="swiper-slide" *ngFor="let product of personalTrainings">                        
+                        <div class="pricing-item" [style.border-radius]="'15px'" [ngClass]="{'selected-signup-box' : product.id === signup.product_id, 'unselected-signup-box': product.id !== signup.product_id}">
+                          <div class="pricing-title">                            
+                            <h5 class="text-heading-color" [ngClass]="{'custom-color2' : product.id === signup.product_id, 'text-heading-color': product.id !== signup.product_id}">{{config.isArabic? product.arabic_name : product.english_name}}</h5>
+                          </div>
+                          <div class="pricing-amount">
+                            <h2>{{product.amount_after_vat.toFixed(1)}}{{' '}}{{'SAR' | translate}}</h2>
+                            <h3>{{config.isArabic? product.period + ' ' + product.arabic_period_unit : product.period + ' ' + product.period_unit}}</h3>
+                          </div>
+                          <!-- <div class="pricing-content">
+                            <ul class="pricing-list">
+                              <li class="font-size-12" *ngFor="let option of product[config.isArabic? 'arabic_options': 'english_options']">{{option}}</li>
+                            </ul>
+                          </div> -->
+                          <div class="term-condition">                            
+                            <a class="tc-link terms-conditions-btn cursor-pointer" (click)="openProductTermsConditionsDialog(config.isArabic? product.arabic_terms_conditions: product.terms_conditions)">{{'terms_and_conditions1'| translate}}</a> 
+                          </div>
+                          <div class="pricing-footer">
+                            <a class="btn btn-subscribe" (click)="onSelectProduct(product)">{{'Select product' | translate}}</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+              <div class="row pt-10" *ngIf="productForm.submitted && TDProductIDRef.invalid">
+                <div class="col-12">
+                    <p class="form-text text-center text-danger" *ngIf="TDProductIDRef.errors.required">{{'Please Select Product' | translate}}</p>
+                </div>
+              </div>
+
+              <div class="row pt-50">
+                <div class="col-12">
+                  <div class="d-flex justify-content-between">
+                    <button type="button" (click)="stepperPrevious()" class="btn btn-secondary btn-prev">
+                      <i class="fa fa-arrow-left align-middle ml-sm-25 mx-2"></i>
+                      <span class="align-middle d-sm-inline-block d-none">{{'Previous' | translate}}</span>
+                    </button>
+                    <button (click)="stepperNext(3, productForm)" class="btn btn-primary btn-next">
+                      <span class="align-middle d-sm-inline-block d-none">{{'Next' | translate}}</span>
+                      <i class="fa fa-arrow-right align-middle ml-sm-25 mx-2"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+
+          <div id="user-information" class="content">
+            <form #userInformationForm="ngForm">
+              <div class="content-header">
+                <h5 class="mb-0">{{'User Information' | translate}}</h5>
+                <small>{{'Enter Your Personal Info' | translate}}</small>
+              </div>
+
+              <div class="row" *ngIf="type === 'academy'">
+                <div class="form-group col-md-6">
+                  <label class="form-label" for="first-name">{{'Parent Name'|translate}}</label>
+                  <input
+                    disabled
+                    [(ngModel)]="signup.parent_name"
+                    type="text"
+                    name="parent_name"
+                    class="form-control"
+                  />
+                </div>
+                <div class="form-group col-md-6">
+                  <label class="form-label" for="last-name">{{'Parent Mobile' | translate}}</label>
+                  <input
+                    disabled
+                    [(ngModel)]="signup.parent_mobile"
+                    type="text"
+                    name="parent_mobile"
+                    class="form-control"
+                  />
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="form-group col-md-6">
+                  <label class="form-label" for="first-name">{{'First Name'|translate}}</label>
+                  <input
+                    [(ngModel)]="signup.first_name"
+                    #TDFirstNameRef="ngModel"
+                    required
+                    type="text"
+                    name="first-name"
+                    id="first-name"
+                    class="form-control"
+                    [class.error]="userInformationForm.submitted && TDFirstNameRef.invalid"
+                    [placeholder]="'Enter first Name' | translate"
+                  />
+                  <span *ngIf="userInformationForm.submitted && TDFirstNameRef.invalid" class="invalid-form">
+                      <small class="form-text text-danger" *ngIf="TDFirstNameRef.errors.required"
+                      >{{'This field is required!' | translate}}</small
+                      >
+                    </span>
+                </div>
+                <div class="form-group col-md-6">
+                  <label class="form-label" for="last-name">{{'Last Name' | translate}}</label>
+                  <input
+                    [(ngModel)]="signup.last_name"
+                    #TDLastNameRef="ngModel"
+                    required
+                    type="text"
+                    name="last-name"
+                    id="last-name"
+                    class="form-control"
+                    [class.error]="userInformationForm.submitted && TDLastNameRef.invalid"
+                    [placeholder]="'Enter Last Name' | translate"
+                  />
+                  <span *ngIf="userInformationForm.submitted && TDLastNameRef.invalid" class="invalid-form">
+                      <small class="form-text text-danger" *ngIf="TDLastNameRef.errors.required"
+                      >{{'This field is required!' | translate}}</small
+                      >
+                    </span>
+                </div>
+              </div>
+              <div class="row">
+                <div class="form-group col-md-6">
+                  <label class="form-label" for="id-number">{{'National ID' | translate}}</label>
+                  <input
+                    [(ngModel)]="signup.national_id"
+                    #TDNationalIDRef="ngModel"
+                    required
+                    type="text"
+                    name="national_id"
+                    id="id-number"
+                    class="form-control"
+                    [class.error]="userInformationForm.submitted && TDNationalIDRef.invalid"
+                    [placeholder]="'Enter National ID' | translate"/>
+                    <span *ngIf="userInformationForm.submitted && TDNationalIDRef.invalid" class="invalid-form">
+                      <small class="form-text text-danger" *ngIf="TDNationalIDRef.errors.required">
+                        {{'This field is required!' | translate}}</small>
+                    </span>
+                </div>
+                <div class="form-group col-md-6">
+                  <label class="form-label" for="date-of-birth">{{'Date Of Birth' | translate}}</label>
+                    <input
+                      [(ngModel)]="signup.dob"
+                      #TDDateOfBirthRef="ngModel"
+                      required
+                      name="dob"
+                      type="date"
+                      id="date-of-birth"
+                      class="form-control"
+                      [class.error]="userInformationForm.submitted && TDDateOfBirthRef.invalid"
+                    />
+                    <span *ngIf="userInformationForm.submitted && TDDateOfBirthRef.invalid" class="invalid-form">
+                      <small class="form-text text-danger" *ngIf="TDDateOfBirthRef.errors.required">{{'This field is required!' | translate}}</small>
+                    </span>
+                </div>
+              </div>
+              <div class="content-header">
+                <h5 class="mb-0">{{'Account Details' | translate}}</h5>
+                <small class="text-muted">{{'Enter Your Account Details' | translate}}</small>
+              </div>
+
+              <div class="row">
+                <div class="form-group col-md-6">
+                  <label class="form-label" for="mobile">{{'Mobile Number' | translate}}</label>
+                  <div class="input-group input-group-merge">
+                    <input
+                    [(ngModel)]="signup.mobile"
+                    #TDMobileRef="ngModel"
+                    required
+                    numberValidate
+                    name="mobile"
+                    id="mobile"
+                    class="form-control"
+                    [class.error]="!TDMobileRef.valid && userInformationForm.submitted"
+                    placeholder="05XXXXXXXX"/>
+                    <div class="input-group-append" [ngClass]="{'verified_clickable': !TDMobileRef.invalid && !phone_verified}"
+                      (click)="(!TDMobileRef.invalid && !phone_verified)? openConfirmDialog(): null">
+                      <span class="input-group-text cursor-pointer">
+                        <i class="fa fa-check"></i>                          
+                      </span>
+                    </div>                      
+                  </div>  
+                  <div *ngIf="userInformationForm.submitted && TDMobileRef.invalid" class="invalid-form">
+                    <small class="form-text text-danger" *ngIf="TDMobileRef.errors?.required">
+                      {{'This field is required!' | translate}}
+                    </small>
+                  </div>                                                    
+                </div>
+                <div class="form-group col-md-6">
+                  <label class="form-label" for="email">{{'Email' | translate}}</label>
+                  <input
+                    [(ngModel)]="signup.email"
+                    #TDEmailRef="ngModel"
+                    required
+                    email
+                    type="email"
+                    name="email"
+                    id="email"
+                    class="form-control"
+                    [class.error]="!TDEmailRef.valid && userInformationForm.submitted"
+                    placeholder="example@email.com"/>
+                    <span *ngIf="userInformationForm.submitted" class="invalid-form">
+                      <small class="form-text text-danger" *ngIf="!TDEmailRef.valid">{{'This field is required!' | translate}}</small>
+                    </span>
+                </div>
+              </div>
+              <div class="row">
+                <div class="form-group form-password-toggle col-md-6">
+                  <label class="form-label" for="password">{{'Password' | translate}}</label>
+                  <div class="input-group input-group-merge">
+                    <input [type]="showHidePassword? 'text' : 'password'"
+                           [(ngModel)]="signup.password"
+                           name="password"
+                           id="password"
+                           class="form-control"
+                           [class.error]="!TDPasswordOnlyRef.valid && userInformationForm.submitted"
+                           placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
+                           ngModel
+                           #TDPasswordOnlyRef="ngModel"
+                           required
+                           minlength="6"
+                           pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}">
+                    <div class="input-group-append" (click)="showHidePassword = !showHidePassword">
+                        <span class="input-group-text cursor-pointer">
+                          <i class="fa fa-eye"  *ngIf="!showHidePassword"></i>
+                            <i class="fa fa-eye-slash" *ngIf="showHidePassword"></i>
+                        </span>
+                    </div>
+                  </div>
+                  <div
+                    *ngIf="TDPasswordOnlyRef.invalid && userInformationForm.submitted"
+                    class="form-text text-danger"
+                  >
+                    <small *ngIf="TDPasswordOnlyRef.errors.required"> {{'Password is required.' | translate}} </small>
+                    <small *ngIf="TDPasswordOnlyRef.errors.pattern">
+                      {{'Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters.' | translate}}</small>
+                  </div>
+                </div>
+                <div class="form-group form-password-toggle col-md-6">
+                  <label class="form-label" for="confirm-password">{{'Confirm Password' | translate}}</label>
+                  <div class="input-group input-group-merge">
+                    <input
+                      [type]="showHidePassword? 'text' : 'password'"
+                      name="confirm-password"
+                      id="confirm-password"
+                      class="form-control"
+                      [class.error]="!TDRepeatPasswordRef.valid && userInformationForm.submitted"
+                      placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
+                      required
+                      ngModel
+                      #TDRepeatPasswordRef="ngModel"
+                      pattern="{{ TDPasswordOnlyRef.value }}"
+                      minlength="6"/>
+                    <div class="input-group-append" (click)="showHidePassword = !showHidePassword">
+                      <span class="input-group-text cursor-pointer">
+                        <i class="fa fa-eye"  *ngIf="!showHidePassword"></i>
+                        <i class="fa fa-eye-slash" *ngIf="showHidePassword"></i>
+                      </span>
+                    </div>
+                  </div>
+
+                  <div
+                    *ngIf="TDRepeatPasswordRef.invalid && userInformationForm.submitted"
+                    class="form-text text-danger">
+                    <small *ngIf="TDRepeatPasswordRef.errors.required"> {{'Confirm password is required.' | translate}} </small>
+                    <small *ngIf="TDRepeatPasswordRef.errors.pattern">
+                      {{'Password & Confirm Password does not match.' | translate}}</small>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="form-group form-password-toggle col-md-6" [ngClass]="{invalid: (agree_terms_conditions.touched || agree_terms_conditions.dirty ) && agree_terms_conditions.invalid}">
+                  <div class="agree_terms_conditions j-flex-row-reverse justify-content-between">
+                    <div class="flex-row-reverse">
+                      <label for="agree item" class="term_agree">
+                        <input type="checkbox" name="agree_terms_conditions" class="agree_terms_conditions_checkbox mx-2" [(ngModel)]="agree_terms_conditions_checkbox" #agree_terms_conditions="ngModel" required>
+                        <span class="checkmark"></span>
+                      </label>
+                      <span>{{'I agree'|translate}}                         
+                        <a class="tc-link terms-conditions-btn cursor-pointer" (click)="openProductTermsConditionsDialog(config.isArabic? product.arabic_terms_conditions: product.terms_conditions)">{{'terms_and_conditions1'| translate}}</a> 
+                      </span>
+                    </div>
+                    <div
+                      *ngIf="agree_terms_conditions.invalid && userInformationForm.submitted"
+                      class="form-text text-danger">
+                      <small *ngIf="agree_terms_conditions.errors.required"> {{'terms_conditions' | translate}} </small>
+                    </div>                    
+                  </div>
+                </div>
+                <div class="form-group col-md-6">
+                  <label class="form-label" for="referral_code">{{'referrel'|translate}}</label>
+                  <input
+                    [(ngModel)]="signup.referral_code"
+                    #TDReferralRef="ngModel"                    
+                    type="text"
+                    name="referral_code"
+                    id="referral_code"
+                    class="form-control"
+                    [class.error]="userInformationForm.submitted && TDReferralRef.invalid"
+                    [placeholder]="'enter_referral_code' | translate"
+                  />
+                  <span *ngIf="userInformationForm.submitted && TDReferralRef.invalid" class="invalid-form">
+                      <!-- <small class="form-text text-danger" *ngIf="TDReferralRef.errors.required"
+                      >{{'This field is required!' | translate}}</small> -->
+                  </span>
+                </div>
+              </div>
+
+              <div class="row pt-50">
+                <div class="col-12">
+                  <div class="d-flex justify-content-between">
+                    <button
+                      type="button"
+                      (click)="stepperPrevious()"
+                      class="btn btn-secondary btn-prev">
+                      <i class="fa fa-arrow-left align-middle ml-sm-25 mx-2"></i>
+                      <span class="align-middle d-sm-inline-block d-none">{{'Previous' | translate}}</span>
+                    </button>
+                    <button
+                      (click)="stepperNext(4, userInformationForm)"
+                      class="btn btn-primary btn-next">
+                      <span class="align-middle d-sm-inline-block d-none">{{'Next' | translate}}</span>
+                      <i class="fa fa-arrow-right align-middle ml-sm-25 mx-2"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+
+          <div id="payment" class="content">
+            <form #paymentForm="ngForm">
+
+              <div class="content-header text-center">
+                <h5 class="mb-0">{{'Order Detail' | translate}}</h5>
+                <small>{{'Summary of your order' | translate}}</small>
+              </div>
+
+              <div class="row">
+                <div class="form-group col-md-6">
+                  <label class="form-label" for="start-date">{{'Subscription start date'|translate}}</label>
+                  <input
+                    [(ngModel)]="signup.subscription_day"
+                    #TDSubscriptionStartRef="ngModel"
+                    required
+                    type="date"
+                    name="subscription_day"
+                    id="start-date"
+                    class="form-control"
+                    [class.error]="paymentForm.submitted && TDSubscriptionStartRef.invalid"/>
+                  <span *ngIf="paymentForm.submitted && TDSubscriptionStartRef.invalid" class="invalid-form">
+                      <small class="form-text text-danger" *ngIf="TDSubscriptionStartRef.errors.required"
+                      >{{'This field is required!' | translate}}</small
+                      >
+                    </span>
+                </div>
+                <div class="form-group col-md-6">
+                  <label class="form-label" for="promotional-code">{{'Promotional code' | translate}}</label>
+                  <div class="input-group">
+                    <input
+                      [(ngModel)]="signup.promotional_code"
+                      type="text"
+                      name="promotional_code"
+                      id="promotional-code"
+                      class="form-control"
+                      [placeholder]="'Enter code' | translate"/>
+                    <div class="input-group-append">
+                      <button class="btn btn-dark" [style.padding]="'10px 19px'" [style.border]="'1px solid #c5c1c1'" [style.border-radius]="0" (click)="onCheckCoupon()">{{'Check Code' | translate}}</button>
+                    </div>
+                  </div>
+                  <span *ngIf="discount.response" class="invalid-form">                      
+                    <small class="form-text {{discount.status? 'success':'error'}}">{{discount.message! | translate}}</small>
+                </span>
+                </div>
+              </div>
+              <div class="row invoice-preview">
+                <!-- Invoice -->
+                <div class="col-12 printRef">
+                  <div class="card invoice-preview-card">
+                    <!-- Invoice Description Starts -->
+                    <div class="table-responsive">
+                      <table class="table">
+                        <thead>
+                        <tr>
+                          <th class="py-1">{{'Product' | translate}}</th>
+                          <th class="py-1">{{'Type' | translate}}</th>
+                          <th class="py-1">{{'Duration' | translate}}</th>
+                          <th class="py-1">{{'Total' | translate}}</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr class="border-bottom">
+                          <td class="py-1">
+                            <p class="card-text font-weight-bold">{{config.isArabic? product.arabic_name:product.english_name}}</p>
+                            <p class="card-text text-nowrap">{{config.isArabic? product.arabic_description: product.english_description}}</p>
+                          </td>
+                          <td class="py-1">
+                            <span class="font-weight-bold">{{product.type | translate}}</span>
+                          </td>
+                          <td class="py-1">
+                            <span class="font-weight-bold">{{config.isArabic? product.period + ' ' + product.arabic_period_unit : product.period + ' ' + product.period_unit}}</span>
+                          </td>
+                          <td class="py-1">
+                            <span class="font-weight-bold">{{product.amount_after_vat}}{{' '}}{{'SAR' |translate}}</span>
+                          </td>
+                        </tr>
+                        </tbody>
+                      </table>
+                    </div>
+
+                    <div class="card-body invoice-padding pb-0">
+                      <div class="row invoice-sales-total-wrapper">
+                        <div class="col-md-6 order-md-1 order-2 mt-md-0 mt-3">
+                          <p class="card-text font-weight-bold mb-0">
+                            {{'Payment Summary' | translate}}
+                          </p>
+                        </div>
+                        <div class="col-md-6 d-flex justify-content-end order-md-2 order-1">
+                          <div class="invoice-total-wrapper">
+                            <div class="invoice-total-item">
+                              <p class="invoice-total-title">{{'Subtotal' | translate}}:</p>                              
+                              <p class="invoice-total-amount">{{(product.amount_after_vat/1.15).toFixed(1)}}{{' '}}{{'SAR' |translate}}</p>
+                            </div>
+                            <div class="invoice-total-item">
+                              <p class="invoice-total-title">{{'Discount' | translate}}:</p>                              
+                              <p class="invoice-total-amount discount">{{discount.price.toFixed(1)}}{{' '}}{{'SAR' |translate}}</p>
+                            </div>
+                            <div class="invoice-total-item">
+                              <p class="invoice-total-title">{{'VAT' | translate}}:</p>                              
+                              <p class="invoice-total-amount">{{((product.amount_after_vat/1.15-discount.price)*0.15).toFixed(1)}}{{' '}}{{'SAR' |translate}}</p>
+                            </div>
+                            <hr class="my-50" />
+                            <div class="invoice-total-item">
+                              <p class="invoice-total-title">{{'Total' | translate}}:</p>                              
+                              <p class="invoice-total-amount">{{ ((product.amount_after_vat/1.15 - discount.price)*1.15).toFixed(1) }}{{' '}}{{'SAR' |translate}}</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- Invoice Description Ends -->
+
+                    <hr class="invoice-spacing" />
+
+                    <!-- Invoice Note Starts -->
+                    <div class="card-body invoice-padding pt-0">
+                      <div class="row">
+                        <div class="col-12">
+                          <p class="text-muted font-size-14 text-justify">{{config.isArabic? product.arabic_terms_conditions: product.terms_conditions}}</p>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- Invoice Note Ends -->
+                  </div>
+                </div>
+                <!--/ Invoice -->
+
+              </div>
+              <div class="row pt-50">
+                <div class="col-12">
+                  <div class="d-flex justify-content-between">
+                    <button type="button" (click)="stepperPrevious(2)" class="btn btn-secondary btn-prev">
+                      <i class="fa fa-arrow-left align-middle ml-sm-25 mx-2"></i>
+                      <span class="align-middle d-sm-inline-block d-none">{{'Previous' | translate}}</span>
+                    </button>
+                    <button (click)="stepperNext(5, paymentForm)" class="btn btn-primary btn-next">
+                      <span class="align-middle d-sm-inline-block d-none">{{'Pay Now' | translate}}</span>
+                      <i class="fa fa-arrow-right align-middle ml-sm-25 mx-2"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+          
+        </form>
+      </div>
+    </div>
+  </section>
+  <div id="goSell-container" class="goSell-container"></div>
+</div>
+<!--== End Signup modal Wrapper ==-->

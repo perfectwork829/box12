@@ -1,0 +1,84 @@
+$product-details-bg: #fcfcfc;
+$invoice-spacing: 1.45rem 0;
+$invoice-card-body-padding: 2.5rem;
+
+.invoice-preview{
+  .invoice-padding {
+    padding-left: $invoice-card-body-padding;
+    padding-right: $invoice-card-body-padding;
+  }
+  .table {
+    th:first-child,
+    td:first-child {
+      padding-left: 2.5rem;
+    }
+  }
+  .logo-wrapper {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.9rem;
+    .invoice-logo {
+      font-size: 2.142rem;
+      font-weight: bold;
+      letter-spacing: -0.54px;
+      margin-left: 1rem;
+      margin-bottom: 0;
+    }
+  }
+  .invoice-title {
+    font-size: 1.285rem;
+    margin-bottom: 1rem;
+    .invoice-number {
+      font-weight: 600;
+    }
+  }
+  .invoice-date-wrapper {
+    display: flex;
+    align-items: center;
+
+    &:not(:last-of-type) {
+      margin-bottom: 0.5rem;
+    }
+
+    .invoice-date-title {
+      width: 7rem;
+      margin-bottom: 0;
+    }
+    .invoice-date {
+      margin-left: 0.5rem;
+      font-weight: 600;
+      margin-bottom: 0;
+    }
+  }
+  .invoice-spacing {
+    margin: $invoice-spacing;
+  }
+  .invoice-number-date {
+    .title {
+      width: 115px;
+    }
+  }
+  .invoice-total-wrapper {
+    width: 100%;
+    max-width: 12rem;
+    .invoice-total-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      .invoice-total-title {
+        margin-bottom: 0.35rem;
+      }
+      .invoice-total-amount {
+        margin-bottom: 0.35rem;
+        font-weight: 600;
+      }
+    }
+  }
+
+  @media (min-width: 768px) {
+    .invoice-title {
+      text-align: right;
+      margin-bottom: 3rem;
+    }
+  }
+}

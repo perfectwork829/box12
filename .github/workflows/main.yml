@@ -1,0 +1,54 @@
+name: Deploy to Server
+
+on:
+  push:
+    branches:
+      - dev
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: "20.x"
+
+      - name: Install Angular CLI
+        run: npm install -g @angular/cli
+
+      - name: Install NPM Dependencies
+        run: npm install --force
+
+      - name: Build Angular Project
+        run: ng build --configuration=production
+  
+      - name: Tar dist files 
+        run: ( cd dist/3days ; tar zcf ../../deploy.tgz * ) 
+
+      - name: Copy files with scp-deploy
+        uses: nogsantos/scp-deploy@v1.3.0
+        with:
+          host: ${{ secrets.HOST }}
+          user: ${{ secrets.USERNAME }}
+          key: ${{ secrets.SSH_KEY }}
+          src: /github/workspace/deploy.tgz
+          remote: /tmp/deploy.tgz
+
+      - name: Unpack and deploy dist files, restart nginx
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.SSH_KEY }}
+          script: |
+            cd /home/public_html
+            rm -rf *
+            tar zxf /tmp/deploy.tgz 
+            chown -R www-data:www-data * 
+            rm -f /tmp/deploy.tgz
+            systemctl restart nginx

@@ -1,0 +1,71 @@
+<!--== Start profile detail Area Wrapper ==-->
+<section class="pricing-area pricing-default-area membership">
+  <div class="container mt-5">
+    <div class="profile-container mx-auto">
+      <div class="profile-photo m-auto" style="background-image: url( {{imageUrl}} );">
+        <input type="file" class="d-none" id="profileAvatar" name = "profileAvatar" (change)="onImageSelected($event)" accept="image/*">
+        <ng-container class="crop-image-container" *ngIf="bCropImg">
+          <image-cropper
+          [imageChangedEvent]="imageChangedEvent"
+          [maintainAspectRatio]="true"
+          [aspectRatio]="3 / 3"
+          [autoCrop]="true"
+          [resizeToWidth]="100"
+          [resizeToHeight]="100"
+          [hidden]="false"
+          format="png"
+          (imageCropped)="imageCropped($event)"
+          (imageLoaded)="imageLoaded($event)"
+          (cropperReady)="cropperReady()"
+          (loadImageFailed)="loadImageFailed()"> </image-cropper>      
+        </ng-container>
+        <img [src]="croppedImage? croppedImage: imageUrl" />
+				<label for ="profileAvatar" class="edit-btn cursor-pointer"><span class="fa fa-pencil"></span> </label>
+      </div>      
+			<div class="profile-name mt-2">
+				{{current_user_profile?.english_name}}
+			</div>
+			<div class="profile-email">
+				{{current_user_profile?.email}}
+			</div>
+      <div class="row">
+        <div class="col-12">
+          <div class="profile-subscription-countdown mt-5 col-11 col-md-5 mx-auto">
+            <div class="inner-wrap text-center p-3 boxshadow-custom2 d-flex flex-row justify-content-around ">
+              <div class=" w-25 align-items-center d-flex">
+                <img src="../../../../../assets/img/logo.png" alt="">
+              </div>
+              <div class="d-flex flex-column align-items-center ">
+                <p class="tinySubtitle-size mb-0">
+                  {{'subscription_countdown' | translate}}
+                </p>
+                <span class="countdown-value">
+                  {{memberSubscription.remainingDays}} {{'days' | translate}}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>      
+      <div class="row mt-5">
+        <div class="col-12 col-sm-6 col-xs-12 col-md-3 detail-item p-2 p-md-3 p-personal-data ng-star-inserted p-{{pitem.id}}" *ngFor="let pitem of pitems" (click) = "doActive.emit(pitem.href)">
+          <div class="profile-item mb-sm-10 justify-content-center boxshadow-custom1">
+            <div class="profile-sub-item">
+              <div class="profile-item-title">
+                <h5>{{pitem.label | translate}}</h5>
+              </div> 
+              <div class="profile_icon d-flex pdb_parent justify-content-center">
+                <div class="pdb_child d-flex boxshadow-custom4">
+                  <span class="{{pitem.iconclass}}"></span>
+                </div>            
+              </div>
+            </div>            
+          </div>
+          <!--== End Pricing Item ==-->
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!--== End Profile detail Area Wrapper ==-->
+

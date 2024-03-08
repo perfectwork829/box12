@@ -1,0 +1,51 @@
+.loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  background-color: white;
+  .spinner-grow{
+    display: inline-block;
+    width: 2rem;
+    height: 2rem;
+    vertical-align: -0.125em;
+    background-color: currentColor;
+    border-radius: 50%;
+    /* opacity: 0; */
+    -webkit-animation: .75s linear infinite spinner-grow;
+    animation: .75s linear infinite spinner-grow;
+  }
+  .loading {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);    
+    .aloader {
+      background: #B89F65;
+    }
+  }
+}
+
+@-webkit-keyframes spinner-grow {
+  0% {
+      transform: scale(0)
+  }
+
+  50% {
+      opacity: 1;
+      transform: none
+  }
+}
+
+@keyframes spinner-grow {
+  0% {
+      transform: scale(0)
+  }
+
+  50% {
+      opacity: 1;
+      transform: none
+  }
+}

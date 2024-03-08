@@ -1,0 +1,93 @@
+<!--== Start Personal Info Area Wrapper ==-->
+<app-spinner></app-spinner>
+<main class="main-content">    
+  <section class="personal-container pricing-area pricing-default-area">
+    <div class="container personal-box">
+      <form #profileForm="ngForm" (ngSubmit)="profileForm.form.valid ? update() : false">
+        <div class="content-header text-center section-title mb-sm-2 mb-5 mt-5">
+          <h2 class="mb-0 text-body-color title"><span>{{'Personal data' | translate}}</span></h2>
+        </div>
+        <div class="row">
+          <div class="form-group col-md-4 offset-md-2">
+            <label class="form-label" for="start-date">{{'Arabic Name'|translate}}</label>
+            <input
+              [(ngModel)]="current_user_data.arabic_name"
+              #arabic_name="ngModel"
+              required
+              type="text"
+              name="arabic_name"
+              id="arabic_name"
+              class="form-control"
+              [class.error]="profileForm.submitted && arabic_name.invalid" placeholder="Arabic Name" required/>
+              <span *ngIf="profileForm.submitted && arabic_name.invalid" class="invalid-form">
+                <small class="form-text text-danger" *ngIf="arabic_name.errors.required"
+                >{{'This field is required!' | translate}}</small>
+              </span>
+          </div>
+          <div class="form-group col-md-4">
+            <label class="form-label" for="start-date">{{'English Name'|translate}}</label>
+            <input
+              [(ngModel)]="current_user_data.english_name"
+              #english_name="ngModel"
+              required
+              type="text"
+              name="english_name"
+              id="english_name"
+              class="form-control"
+              [class.error]="profileForm.submitted && english_name.invalid" placeholder="English Name" required/>
+              <span *ngIf="profileForm.submitted && english_name.invalid" class="invalid-form">
+                <small class="form-text text-danger" *ngIf="english_name.errors.required"
+                >{{'This field is required!' | translate}}</small>
+              </span>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col-md-8 offset-md-2">
+            <label class="form-label" for="start-date">{{'ID Number'|translate}}</label>
+            <input
+              [(ngModel)]="current_user_data.national_id"
+              #national_id="ngModel"
+              required
+              type="text"
+              name="national_id"
+              id="national_id"
+              class="form-control"
+              [class.error]="profileForm.submitted && national_id.invalid" placeholder="Arabic Name" required/>
+              <span *ngIf="profileForm.submitted && national_id.invalid" class="invalid-form">
+                <small class="form-text text-danger" *ngIf="national_id.errors.required"
+                >{{'This field is required!' | translate}}</small>
+              </span>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col-md-8 offset-md-2">
+            <label class="form-label" for="start-date">{{'Birthday'|translate}}</label>
+            <input
+              [(ngModel)]="current_user_data.dob"
+              #dob="ngModel"
+              required
+              type="date"
+              name="dob"
+              id="dob"
+              class="form-control"
+              
+              [class.error]="profileForm.submitted && dob.invalid" placeholder="Arabic Name" required/>
+              <span *ngIf="profileForm.submitted && dob.invalid" class="invalid-form">
+                <small class="form-text text-danger" *ngIf="dob.errors.required"
+                >{{'This field is required!' | translate}}</small>
+              </span>
+          </div>
+        </div>
+        <div class="row">
+          <div class="offset-md-2 col-md-8 col-sm-8 col-xs-8">
+            <div class="form-group text-center flex-row gap-3">
+              <button type="submit" class="btn button btn-theme" [class.loading]="submitting">{{'Saving changes' |  translate}}</button>              
+              <button type="button" class="btn btn-back" [routerLink] = "'/profile'">{{'Back' | translate}}</button>
+            </div>            
+          </div>          
+        </div>
+      </form>
+    </div>
+  </section>  
+</main>
+<!--== End Personal Info Area Wrapper ==-->

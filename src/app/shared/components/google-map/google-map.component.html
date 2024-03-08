@@ -1,0 +1,33 @@
+<!--== Start Google map Wrapper ==-->
+<google-map [zoom]="12" height="400px" width="100%" [center]="markerCenter" [options]="mapOptions" (mapClick)="addMarker($event)">  
+  <map-marker
+  *ngFor="let branch of branches; let i = index"     
+    #marker="mapMarker"
+    [position]="{
+      lat: branch.lat,
+      lng: branch.lng
+    }"         
+    [options]="{
+      icon: {
+        url: '../../../../assets/img/icons/small-icon-pin.png',
+        scaledSize: {
+          width: 32,
+          height: 56
+        }
+      }
+    }" (mapClick)="openInfoWindow(marker, i)">
+  </map-marker>
+  <map-info-window *ngFor="let branch of branches; let i = index" [position]="{lat: branch.lat,lng: branch.lng}" #infoWindow="mapInfoWindow">    
+    <div class="pop_branch_info">
+      <div *ngIf="!isLangFlag">
+        <p class="m-0 mb-2">{{ branch.name_en | translate }}</p>
+        <p class="m-0">{{branch.branch_category | translate }}</p>
+      </div>
+      <div *ngIf="isLangFlag">
+        <p class="m-0 mb-2">{{ branch.name_ar | translate }}</p>
+        <p class="m-0">{{branch.branch_category | translate }}</p>
+      </div>
+    </div>
+  </map-info-window>
+</google-map>
+<!--== End Google map Wrapper ==-->

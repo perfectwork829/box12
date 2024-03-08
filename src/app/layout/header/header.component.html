@@ -1,0 +1,105 @@
+<!--== Start Header Wrapper ==-->
+<section id="home-section">
+  <header class="header-area header-default header-transparent header-style sticky-header">
+    <div class="container justify-content-between d-flex header-container">
+      <div class="header-logo-area">
+        <a routerLink="/">
+          <img class="logo-main" src="assets/img/logo.png" alt="Logo" />
+          <img class="logo-light" src="assets/img/logo.png" alt="Logo" />
+        </a>
+      </div>
+      <div class="header-align">
+        <div class="header-navigation-area d-none d-md-block">
+          <ul class="main-menu nav position-relative" *ngIf="!isLoggedIn">
+            <li><a href="#home-section">{{'Home' | translate}}</a></li>                
+            <li class="nav-item"><a class="nav-link" href="#about-section">{{'about BOX12?' | translate }}</a></li>            
+            <li class="has-submenu"><a href="#">{{'Club' | translate}}</a>
+              <ul class="submenu-nav">
+                <li class="nav-item"><a class="nav-link text-uppercase" href="#subscribers-section">{{'subscriptions1' | translate }}</a></li>
+                <li class="nav-item"><a class="nav-link text-uppercase" href="#workouts-section">{{'Our Workouts' | translate }}</a></li>
+                <li class="nav-item"><a class="nav-link text-uppercase" href="#exercise-section">{{'group exercise' | translate }}</a></li>                                
+              </ul>
+            </li>
+            <!-- <li><a [routerLink]="'/academy'" routerLinkActive="active">{{'Kids Academy' | translate}}</a></li> -->
+            <li class="nav-item"><a class="nav-link text-uppercase" [routerLink]="'/policy'" routerLinkActive="active">{{'Policy' | translate }}</a></li>
+            <li><a (click)="onContactUs()">{{'Contact_Us' | translate}}</a></li>
+          </ul>
+          <ul class="main-menu nav position-relative" *ngIf="isLoggedIn">
+            <li><a [routerLink]="'/'" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">{{ 'Home' | translate }}</a></li>
+            <li><a [routerLink]="'/bookings'" routerLinkActive="active">{{ 'Sessions' | translate }}</a></li>
+            <li><a [routerLink]="'/membership'" routerLinkActive="active">{{ 'My Membership' | translate }}</a></li>
+            <li><a [routerLink]="'/trainers'" routerLinkActive="active">{{ 'Personal_Training' | translate }}</a></li>
+            <li><a [routerLink]="'/products'" routerLinkActive="active">{{ 'Products' | translate }}</a></li>
+            <li><a [routerLink]="'/profile'" routerLinkActive="active">{{ 'My Profile' | translate }}</a></li>
+          </ul>
+        </div>
+
+        <div class="header-action-area">
+          <div class="header-action-cart d-none d-xl-flex">
+            <button class="btn-cart cart-icon notification-icon" *ngIf="config.token" (click)="onNotificationsCheck()">
+              <i class="fa fa-bell-o" aria-hidden="true"></i>
+              <div class="unread_notification_symbol" *ngIf = '!unreadNotifications' [class.hidden]="isHidden"></div>						      
+            </button>
+            <button class="btn-cart cart-icon" (click)="onLanguageChange()">
+              <i class="fa fa-globe"></i>
+            </button>                
+            <button class="btn-cart cart-icon" (click)="onLogin()" *ngIf="!config.token">
+              <i class="fa fa-sign-in"></i>
+            </button>          
+            <a class="btn-cart cart-icon" (click)="onOpenProfile()" *ngIf="config.token">
+              <i class="fa fa-user-circle"></i>
+            </a>
+          </div>
+
+          <button class="btn-menu d-xl-none notification-icon" *ngIf="config.token" (click)="onNotificationsCheck()">
+            <i class="fa fa-bell-o" aria-hidden="true"></i>
+          </button>
+          <button class="btn-menu d-xl-none" (click)="onLanguageChange()">
+            <i class="fa fa-globe"></i>
+          </button>
+
+          <button class="btn-menu d-xl-none" (click)="onLogin()" *ngIf="!config.token">
+             <i class="fa fa-sign-in"></i>
+          </button>
+          <button class="btn-menu d-xl-none" (click)="onOpenProfile()" *ngIf="config.token">
+            <i class="fa fa-user-circle"></i>
+          </button>
+          <button class="btn-menu d-md-none">
+            <i class="fa fa-bars" (click)="onMenuClicked()"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+</section>
+<!--== End Header Wrapper ==-->
+
+<!--== Start Side Menu ==-->
+<aside class="off-canvas-wrapper">
+  <div class="off-canvas-inner">
+    <div class="off-canvas-overlay d-none"></div>
+    <!-- Start Off Canvas Content Wrapper -->
+    <div class="off-canvas-content">
+      <!-- Off Canvas Header -->
+      <div class="off-canvas-header">
+        <div class="close-action">
+          <button class="btn-close" (click)="onMenuClosed()"><i class="fa fa-close"></i></button>
+        </div>
+      </div>
+
+      <div class="off-canvas-item">
+        <!-- Start Mobile Menu Wrapper -->
+        <div class="res-mobile-menu">
+          <!-- Note Content Auto Generate By Jquery From Main Menu -->
+        </div>
+        <!-- End Mobile Menu Wrapper -->
+      </div>
+      <!-- Off Canvas Footer -->
+      <div class="off-canvas-footer"></div>
+    </div>
+    <!-- End Off Canvas Content Wrapper -->
+  </div>
+</aside>
+<!--== End Side Menu ==-->
+
+

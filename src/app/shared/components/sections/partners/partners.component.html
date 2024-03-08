@@ -1,0 +1,46 @@
+<!--== Start Partners Slider Area Wrapper ==-->
+<section class="gallery-area gallery-default-area">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 pr-0">
+        <div class="section-title stitle-style2 text-center" data-aos="fade-up" data-aos-duration="1000">
+          <h2 class="title">{{'OUR' | translate}} <span>{{'PARTNER' | translate}}</span></h2>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid">
+    <div class="row justify-content-center">  
+      <div class="col-1 position-relative slider-button" *ngIf="bLangFlag" >
+        <div class="swiper-button-next next-slide position-absolute "  (click)="plusSlides()"></div>
+      </div>
+      <div class="col-1 position-relative slider-button" *ngIf="!bLangFlag" >
+        <div class="swiper-button-prev prev-slide position-absolute"  (click)="plusSlides()"></div>
+      </div>
+      <div class="col-10">
+        <div class="gallery-slider-content">
+          <div class="swiper-container gallery-slider-container">
+            <div class="swiper-wrapper gallery-slider">
+              <div class="swiper-slide" *ngFor="let partner of partners.concat(partners)">
+                <div class="gallery-item">
+                  <div class="thumb">
+                    <a class="lightbox-image" data-fancybox="gallery" href="{{partner}}">
+                      <img src="{{partner}}" alt="Image" class="img-fluid">
+                    </a>
+                  </div>
+                </div>
+              </div>                     
+            </div>            
+          </div>          
+        </div>
+      </div>
+      <div class="col-1 position-relative slider-button" *ngIf="bLangFlag" >
+        <div class="swiper-button-prev prev-slide position-absolute "  (click)="previw()"></div>
+      </div>      
+      <div class="col-1 position-relative slider-button" *ngIf="!bLangFlag" >
+        <div class="swiper-button-next next-slide position-absolute "  (click)="previw()"></div>
+      </div> 
+    </div>
+  </div>
+</section>
+<!--== End Partners Slider Area Wrapper ==-->

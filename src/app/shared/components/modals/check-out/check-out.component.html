@@ -1,0 +1,290 @@
+<!--== Start Check Out modal ==-->
+<div class="modal-header">
+  <h4 class="modal-title text-primary">
+    <img class="logo-main" src="assets/img/logo.png" alt="Logo" />
+  </h4>
+  <button type="button" class="btn btn-dark" (click)="onClose()" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <section class="horizontal-wizard">
+    <div id="stepper" class="bs-stepper horizontal-wizard-example">
+      <div class="bs-stepper-header">
+        <div class="step" data-target="#branch-selection">
+          <button class="step-trigger">
+            <span class="bs-stepper-box">1</span>
+            <span class="bs-stepper-label">
+                <span class="bs-stepper-title">{{'Club' | translate}}</span>
+              </span>
+          </button>
+        </div>
+        <div class="line"><i class="fa fa-chevron-right font-medium-2"></i></div>
+        <div class="step" data-target="#payment">
+          <button class="step-trigger">
+            <span class="bs-stepper-box">2</span>
+            <span class="bs-stepper-label">
+                <span class="bs-stepper-title">{{'Payment' | translate}}</span>
+              </span>
+          </button>
+        </div>
+      </div>
+      <div class="bs-stepper-content">
+        <form (ngSubmit)="(HWForm.form.valid)" #HWForm="ngForm">
+          <div id="branch-selection" class="content">
+            <form #branchForm="ngForm">
+              <div class="row mb-20">
+                <div class="col-12">
+                  <div class="card-body">
+                    <div class="mt-4 mb-50 text-center">
+                      <h4 class="pb-0 mb-0">{{'Find club' | translate}}</h4>
+                      <p class="card-text pt-0 mt-0">{{'Select nearby club' | translate}}</p>
+                    </div>
+                    <div class="row">
+                      <div class="col-6 pb-10" *ngFor="let item of product.branches">
+                        <div class="card {{item.id === branch.id? 'bg-primary':'bgcolor-gray-light' }}" (click)="onBranchSelect(item)">
+                          <div class="card-body item-heading">
+                            <h5 class="text-truncate mb-0">{{ config.isArabic? item.name_ar:item.name_en }}</h5>
+                            <small class="text-body" *ngIf="config.isArabic"> {{item.address2}}</small>
+                            <small class="text-body" *ngIf="!config.isArabic"> {{item.address1}}</small>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="form-group col-12 text-center">
+                  <input [(ngModel)]="form.default_branch" #TDBranchRef="ngModel"  type="text" name="default_branch" class="d-none" [class.error]="branchForm.submitted && TDBranchRef.invalid"/>
+                  <span *ngIf="branchForm.submitted && TDBranchRef.invalid" class="invalid-form">
+                    <small class="form-text text-danger" *ngIf="TDBranchRef.errors!.required">{{'This field is required!' | translate}}</small>
+                  </span>
+                </div>
+              </div>
+
+              <div class="row" *ngIf="branch.id && branch.location_type">
+                <div class="col-12">
+                  <div class="card">
+                    <div class="card-body">
+                      <div class="row">
+                        <div class="col-md-6 col-sm-12">
+                          <div class="branch-body">
+                            <div class="branch-icon"><i class="fa fa-leaf"></i></div>
+                            <div class="branch-info">
+                              <div class="branch-title">{{'Branch Type' | translate}}</div>
+                              <div class="branch-subtitle">{{branch?.branch_category | translate}}</div>
+                            </div>
+                          </div>
+                        </div>
+                        <!-- <div class="col-md-6 col-sm-12">
+                          <div class="branch-body">
+                            <div class="branch-icon"><i class="fa fa-address-card"></i></div>
+                            <div class="branch-info">
+                              <div class="branch-title">{{'Branch Capacity' | translate}}</div>
+                              <div class="branch-subtitle">{{branch?.branch_capacity}}</div>
+                            </div>
+                          </div>
+                        </div> -->
+                        <div class="col-md-6 col-sm-12">
+                          <div class="branch-body">
+                            <div class="branch-icon"><i class="fa fa-calendar"></i></div>
+                            <div class="branch-info">
+                              <div class="branch-title">{{'Launched Date' | translate}}</div>
+                              <div class="branch-subtitle">{{branch?.startup_date}}</div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12">
+                          <div class="branch-body">
+                            <div class="branch-icon"><i class="fa fa-envelope"></i></div>
+                            <div class="branch-info">
+                              <div class="branch-title">{{'Branch Email' | translate}}</div>
+                              <div class="branch-subtitle">{{branch?.email}}</div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12">
+                          <div class="branch-body">
+                            <div class="branch-icon"><i class="fa fa-whatsapp"></i></div>
+                            <div class="branch-info">
+                              <div class="branch-title">{{'Call Branch' | translate}}</div>
+                              <a class="branch-subtitle" href="tel:{{branch.phone}}">{{branch.phone}}</a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+
+              <div class="row pt-50">
+                <div class="col-12">
+                  <div class="d-flex justify-content-between">
+                    <button type="button" disabled class="btn btn-secondary btn-prev">
+                      <i class="fa fa-arrow-left align-middle ml-sm-25 mx-2"></i>
+                      <span class="align-middle d-sm-inline-block d-none">{{'Previous' | translate}}</span>
+                    </button>
+                    <button (click)="stepperNext(2, branchForm)" class="btn btn-primary btn-next">
+                      <span class="align-middle d-sm-inline-block d-none">{{'Next' | translate}}</span>
+                      <i class="fa fa-arrow-right align-middle ml-sm-25 mx-2"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div id="payment" class="content">
+            <form #paymentForm="ngForm">
+              <div class="content-header text-center">
+                <h5 class="mb-0">{{'Order Detail' | translate}}</h5>
+                <small>{{'Summary of your order' | translate}}</small>
+              </div>
+              <div class="row">
+                <div class="form-group col-md-6">
+                  <label class="form-label" for="start-date">{{'Subscription start date'|translate}}</label>
+                  <input
+                    [(ngModel)]="form.subscription_day"
+                    #TDSubscriptionStartRef="ngModel"
+                    required
+                    type="date"
+                    name="subscription_day"
+                    id="start-date"
+                    class="form-control"
+                    [class.error]="paymentForm.submitted && TDSubscriptionStartRef.invalid"
+                  />
+                  <span *ngIf="paymentForm.submitted && TDSubscriptionStartRef.invalid" class="invalid-form">
+                      <small class="form-text text-danger" *ngIf="TDSubscriptionStartRef.errors.required"
+                      >{{'This field is required!' | translate}}</small
+                      >
+                    </span>
+                </div>
+                <div class="form-group col-md-6">
+                  <label class="form-label" for="promotional-code">{{'Promotional code' | translate}}</label>
+                  <div class="input-group">
+                    <input
+                      [(ngModel)]="form.promotional_code"
+                      type="text"
+                      name="promotional_code"
+                      id="promotional-code"
+                      class="form-control"
+                      [placeholder]="'Enter code' | translate"
+                    />
+                    <div class="input-group-append">
+                      <button class="btn btn-dark" [style.padding]="'10px 19px'" [style.border]="'1px solid #c5c1c1'" [style.border-radius]="0" (click)="onCheckCoupon()">{{'Check Code' | translate}}</button>
+                    </div>
+                  </div>
+                  <span *ngIf="discount.response" class="invalid-form">                      
+                      <small class="form-text {{discount.status? 'success':'error'}}">{{discount.message! | translate}}</small>
+                  </span>
+                </div>
+              </div>
+              <div class="row invoice-preview">
+                <!-- Invoice -->
+                <div class="col-12 printRef">
+                  <div class="card invoice-preview-card">
+                    <!-- Invoice Description Starts -->
+                    <div class="table-responsive">
+                      <table class="table">
+                        <thead>
+                        <tr>
+                          <th class="py-1">{{'Product' | translate}}</th>
+                          <th class="py-1">{{'Type' | translate}}</th>
+                          <th class="py-1">{{'Duration' | translate}}</th>
+                          <th class="py-1">{{'Total' | translate}}</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr class="border-bottom">
+                          <td class="py-1">
+                            <p class="card-text font-weight-bold">{{config.isArabic? product.arabic_name:product.english_name}}</p>
+                            <p class="card-text text-nowrap">{{config.isArabic? product.arabic_description: product.english_description}}</p>
+                          </td>
+                          <td class="py-1">
+                            <span class="font-weight-bold">{{product.type | translate}}</span>
+                          </td>
+                          <td class="py-1">
+                            <span class="font-weight-bold">{{config.isArabic? product.period + ' ' + product.arabic_period_unit : product.period + ' ' + product.period_unit}}</span>
+                          </td>
+                          <td class="py-1">                            
+                            <span class="font-weight-bold">{{product.amount_after_vat.toFixed(1)}}{{' '}}{{'SAR' |translate}}</span>
+                          </td>
+                        </tr>
+                        </tbody>
+                      </table>
+                    </div>
+
+                    <div class="card-body invoice-padding pb-0">
+                      <div class="row invoice-sales-total-wrapper">
+                        <div class="col-md-6 order-md-1 order-2 mt-md-0 mt-3">
+                          <p class="card-text font-weight-bold mb-0">
+                            {{'Payment Summary' | translate}}
+                          </p>
+                        </div>
+                        <div class="col-md-6 d-flex justify-content-end order-md-2 order-1">
+                          <div class="invoice-total-wrapper">
+                            <div class="invoice-total-item">
+                              <p class="invoice-total-title">{{'Subtotal' | translate}}:</p>                              
+                              <p class="invoice-total-amount subtotal">{{(product.amount_after_vat/1.15).toFixed(1)}}{{' '}}{{'SAR' |translate}}</p>
+                            </div>
+                            <div class="invoice-total-item">
+                              <p class="invoice-total-title">{{'Discount' | translate}}:</p>                              
+                              <p class="invoice-total-amount discount">{{ discount.price }}{{' '}}{{'SAR' |translate}}</p>
+                            </div>
+                            <div class="invoice-total-item">
+                              <p class="invoice-total-title">{{'VAT' | translate}}:</p>                              
+                              <p class="invoice-total-amount">{{((product.amount_after_vat/1.15-discount.price)*0.15).toFixed(1)}}{{' '}}{{'SAR' |translate}}</p>
+                            </div>
+                            <hr class="my-50" />
+                            <div class="invoice-total-item">
+                              <p class="invoice-total-title">{{'Total' | translate}}:</p>                              
+                              <p class="invoice-total-amount total">{{ ((product.amount_after_vat/1.15 - discount.price)*1.15).toFixed(1) }}{{' '}}{{'SAR' |translate}}</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- Invoice Description Ends -->
+
+                    <hr class="invoice-spacing" />
+
+                    <!-- Invoice Note Starts -->
+                    <div class="card-body invoice-padding pt-0">
+                      <div class="row">
+                        <div class="col-12">
+                          <p class="text-muted font-size-14 text-justify">{{config.isArabic? product.arabic_terms_conditions: product.terms_conditions}}</p>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- Invoice Note Ends -->
+                  </div>
+                </div>
+                <!--/ Invoice -->
+
+              </div>
+              <div class="row pt-50">
+                <div class="col-12">
+                  <div class="d-flex justify-content-between">
+                    <button type="button" (click)="stepperPrevious()" class="btn btn-secondary btn-prev">
+                      <i class="fa fa-arrow-left align-middle ml-sm-25 mx-2"></i>
+                      <span class="align-middle d-sm-inline-block d-none">{{'Previous' | translate}}</span>
+                    </button>
+                    <button (click)="onPayNow(paymentForm)" class="btn btn-primary btn-next">
+                      <span class="align-middle d-sm-inline-block d-none">{{'Pay Now' | translate}}</span>
+                      <i class="fa fa-arrow-right align-middle ml-sm-25 mx-2"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+  <div id="goSell-container" class="goSell-container"></div>
+</div>
+<!--== End Check Out modal ==-->

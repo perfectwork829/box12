@@ -1,0 +1,488 @@
+/*
+-----------------------------------------------------------------------
+    Home Slider CSS
+-----------------------------------------------------------------------
+*/
+
+.home-slider-area {
+  &.slider-default {
+    @media #{$sm-device} {
+      padding-top: 110px;
+    }
+    @media #{$xs-device} {
+      padding-top: 100px;
+    }
+    position: relative;
+    .home-slider-content {
+      .swiper-container {
+        .swiper-wrapper {
+          .swiper-slide {
+            &-active {
+              .slider-content-area {                
+                .content {
+                  .inner-content {
+                    -webkit-animation-delay: .3s;
+                    animation-delay: .3s;
+                    -webkit-animation-name: fadeInUp;
+                    animation-name: fadeInUp;
+                  }
+                }
+                .slider-thumb {
+                  img {
+                    -webkit-animation-delay: .5s;
+                    animation-delay: .5s;
+                    -webkit-animation-name: fadeInRight;
+                    animation-name: fadeInRight;
+                  }
+                }
+              }
+            }
+          }
+        }
+        .swiper-pagination {
+          bottom: 23px;
+          .swiper-pagination-bullet {
+            background-color: rgba($white, .46);
+            height: 12px;
+            margin: 0 8px;
+            opacity: 1;
+            width: 12px;
+            &.swiper-pagination-bullet-active {
+              background-color: $white;
+            }
+          }
+        }
+      }
+    }
+    .bg-overlay {
+      position: relative;
+      &:before {
+        background-color: rgba(0, 0, 0, .3);
+        content: "";
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+      }
+    }
+    .home-slider-item {
+      overflow: hidden;
+      position: relative;
+      .bg-thumb {
+        position: relative;
+      }
+      .bg-img {
+        height: 100%;
+        position: absolute;
+        width: 100%;        
+        &.acadamy-page{
+          background-position:left 18%;
+        }
+        &.home-page{
+          background-position:left top;
+        }
+      }           
+    }
+    .acadamy-page{
+      &+.slider-content-area {
+        align-items: center;
+        display: flex;
+        height: auto;
+        position: relative;
+        // @media #{$lg-device} {
+        //   height: 680px;
+        // }
+        // @media #{$md-device} {
+        //   height: 620px;
+        // }
+        // @media #{$sm-device} {
+        //   height: 520px;
+        // }
+        // @media #{$xs-device} {
+        //   height: 500px;
+        // }
+        .content {
+          margin-top: 117px;        
+          height: 44em;        
+          background: linear-gradient(90deg, rgb(187, 191, 208) 77%, rgb(0, 212, 255) 100%),                  
+                  url('../../../assets/img/class/Kids1.jpg');
+          box-shadow: 0 2px 15px 5px 0 2px 15px 5px rgba(184, 159, 101, 0.5);
+          background-repeat: no-repeat;
+          background-size: cover;
+          background-position: top center;
+          background-blend-mode: overlay, soft-light;
+          .inner-content{
+            justify-content: center;
+            display: flex;
+            flex-flow: column;
+            align-items: flex-start;
+            padding: 0 10%;
+            @media #{$sm-device} {
+              align-items: center;
+              padding: auto;
+            }
+            .slider-content{
+              max-width: 880px;
+              @media #{$sm-device} {
+                max-width: 880px;
+                justify-content: center;
+                display: flex;
+                flex-flow: column;
+                align-items: center;
+              }
+            }
+          }
+          img{
+            display: block;
+            width: 14em;
+            margin: 4em auto 20px auto;
+          }
+         
+          @media #{$md-device} {
+            margin-top: 90px;
+            text-align: center;
+          }        
+          @media #{$sm-device} {
+            margin-top: 0px;
+          }
+          @media #{$xs-device} {
+            margin-top: 0px;
+          }
+          .content-image{
+            background-color: $theme-color-text;
+            @media #{$md-device} {
+              margin-top: 66px;
+            }
+            @media #{$sm-device} {
+              margin-top: 0px;
+            }
+          }
+          .inner-content {
+            // position: relative;
+            -webkit-animation-duration: 1.25s;
+            animation-duration: 1.25s;
+            -webkit-animation-fill-mode: both;
+            animation-fill-mode: both;
+            margin-top: 110px;
+            // top: 132px;
+            @media #{$lg-device} {
+              margin-top: 80px;
+            }
+            @media #{$md-device} {
+              margin-top: 74px;
+            }
+            @media #{$sm-device} {
+              margin-top: 0px;
+            }
+            @media #{$xs-device} {
+              margin-top: 0px;
+            }
+            span{
+              font-size: 20px;
+              text-transform: uppercase;
+              margin-bottom: 20px;
+              display: block;
+              font-weight: 700;
+              letter-spacing: 1px;
+              color: $theme-color;
+            }
+            @include transition(2s);
+            .icon {
+              margin-bottom: 19px;
+            }
+            h1{
+              color: $white;
+            }
+            h2 {
+              color: $white;
+              font-size: 56px;
+              font-weight: 600;
+              letter-spacing: .1px;
+              line-height: 1.04;
+              margin-bottom: 25px;
+              text-transform: uppercase;
+              @media #{$lg-device} {
+                font-size: 62px;
+              }
+              @media #{$md-device} {
+                font-size: 48px;
+              }
+              @media #{$xs-device} {
+                font-size: 36px;
+                margin-bottom: 20px;
+              }
+              span {
+                color: #e0e0e0;
+                font-weight: 300;
+              }
+            }
+            span{
+              color: $theme-color;
+            }
+            p {
+              color: $white;
+              font-size: 27px;
+              line-height: 1.5;
+              margin-bottom: 43px;
+              max-width: 450px;
+              @media #{$md-device} {
+                margin-bottom: 25px;
+                max-width: none;
+              }
+              @media #{$xs-device} {
+                font-size: 20px;
+              }
+            }
+            .btn-theme {
+              background-color: transparent;
+              border: 1px solid $accent_color;
+              border-radius: 27.5px;
+              color: $accent_color;
+              font-size: 20px;
+              font-weight: 700;
+              letter-spacing: .1px;
+              padding: 14px 23.9px;
+              text-transform: uppercase;
+              align-items: center;
+              display: flex;
+              justify-content: center;
+              @media #{$md-device} {
+                font-size: 13px;
+                padding: 9px 21px;
+              }
+              &:hover {
+                background-color: transparent;
+                border-color: $white;
+                color: $white;
+              }
+            }
+          }
+        }
+        .slider-thumb {
+          margin-top: 167px;
+          padding-left: 33px;
+          position: relative;
+          @media (max-width:1599px) {
+            padding-left: 0;
+          }
+          @media #{$lg-device} {
+            margin-top: 152px;
+          }
+          @media #{$md-device} {
+            display: none;
+          }
+          img {
+            max-width: none;
+            -webkit-animation-duration: 1s;
+            animation-duration: 1s;
+            -webkit-animation-fill-mode: both;
+            animation-fill-mode: both;
+            animation-name: fadeInRight;
+            //-webkit-animation-name: fadeOut;
+            //animation-name: fadeOut;
+            @media #{$lg-device} {
+              max-width: 100%;
+            }
+          }
+        }
+      }
+    }
+    .slider-content-area {
+      align-items: center;
+      display: flex;
+      height: auto;
+      position: relative;
+      // @media #{$lg-device} {
+      //   height: 680px;
+      // }
+      // @media #{$md-device} {
+      //   height: 620px;
+      // }
+      // @media #{$sm-device} {
+      //   height: 520px;
+      // }
+      // @media #{$xs-device} {
+      //   height: 500px;
+      // }
+      .content {
+        margin-top: 117px;        
+        height: 44em;        
+        background: url('../../../assets/img/class/main.png');
+        box-shadow: 0 2px 15px 5px 0 2px 15px 5px rgba(184, 159, 101, 0.5);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center center;
+        background-blend-mode: overlay, soft-light;
+        .inner-content{
+          justify-content: center;
+          display: flex;
+          flex-flow: column;
+          align-items: center;
+          .slider-content{
+            max-width: 880px;
+            @media #{$sm-device} {
+              max-width: 880px;
+              justify-content: center;
+              display: flex;
+              flex-flow: column;
+              align-items: center;
+            }
+          }
+        }
+        img{
+          display: block;
+          width: 14em;
+          margin: 4em auto 20px auto;
+        }
+			 
+        @media #{$md-device} {
+          margin-top: 90px;
+          text-align: center;
+        }        
+        @media #{$sm-device} {
+          margin-top: 0px;
+        }
+        @media #{$xs-device} {
+          margin-top: 0px;
+        }
+        .content-image{
+          background-color: $theme-color-text;
+          @media #{$md-device} {
+            margin-top: 66px;
+          }
+          @media #{$sm-device} {
+            margin-top: 0px;
+          }
+        }
+        .inner-content {
+          // position: relative;
+          -webkit-animation-duration: 1.25s;
+          animation-duration: 1.25s;
+          -webkit-animation-fill-mode: both;
+          animation-fill-mode: both;
+          margin-top: 110px;
+          // top: 132px;
+          @media #{$lg-device} {
+            margin-top: 80px;
+          }
+          @media #{$md-device} {
+            margin-top: 74px;
+          }
+          @media #{$sm-device} {
+            margin-top: 0px;
+          }
+          @media #{$xs-device} {
+            margin-top: 0px;
+          }
+          span{
+            font-size: 20px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            display: block;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: $theme-color;
+          }
+          @include transition(2s);
+          .icon {
+            margin-bottom: 19px;
+          }
+          h1{
+            color: $white;
+          }
+          h2 {
+            color: $theme-color-primary;
+            font-size: 56px;
+            font-weight: 600;
+            letter-spacing: .1px;
+            line-height: 1.04;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            @media #{$lg-device} {
+              font-size: 62px;
+            }
+            @media #{$md-device} {
+              font-size: 48px;
+            }
+            @media #{$xs-device} {
+              font-size: 36px;
+              margin-bottom: 20px;
+            }
+            span {
+              color: #e0e0e0;
+              font-weight: 300;
+            }
+          }
+          span{
+            color: $theme-color;
+          }
+          p {
+            color: $white;
+            font-size: 27px;
+            line-height: 1.5;
+            margin-bottom: 43px;
+            max-width: 450px;
+            @media #{$md-device} {
+              margin-bottom: 25px;
+              max-width: none;
+            }
+            @media #{$xs-device} {
+              font-size: 14px;
+            }
+          }
+          .btn-theme {
+            background-color: transparent;
+            border: 1px solid $accent_color;
+            border-radius: 27.5px;
+            color: $accent_color;
+            font-size: 20px;
+            font-weight: 700;
+            letter-spacing: .1px;
+            padding: 14px 23.9px;
+            text-transform: uppercase;
+            align-items: center;
+            display: flex;
+            justify-content: center;
+            @media #{$md-device} {
+              font-size: 13px;
+              padding: 9px 21px;
+            }
+            &:hover {
+              background-color: transparent;
+              border-color: $white;
+              color: $white;
+            }
+          }
+        }
+      }
+      .slider-thumb {
+        margin-top: 167px;
+        padding-left: 33px;
+        position: relative;
+        @media (max-width:1599px) {
+          padding-left: 0;
+        }
+        @media #{$lg-device} {
+          margin-top: 152px;
+        }
+        @media #{$md-device} {
+          display: none;
+        }
+        img {
+          max-width: none;
+          -webkit-animation-duration: 1s;
+          animation-duration: 1s;
+          -webkit-animation-fill-mode: both;
+          animation-fill-mode: both;
+          animation-name: fadeInRight;
+          //-webkit-animation-name: fadeOut;
+          //animation-name: fadeOut;
+          @media #{$lg-device} {
+            max-width: 100%;
+          }
+        }
+      }
+    }
+  }
+}

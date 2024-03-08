@@ -1,0 +1,6 @@
+<main class="main-content">  
+  <app-spinner></app-spinner>
+  <app-personal-training-item [config]="config" (changeDate)="receiveSessionDate($event)" [bBlock]="bBlock"
+                              [personalTrainings]="personalTrainings" (onPersonalItemsSelected)="onFetchPersonalTraining()">
+  </app-personal-training-item>
+</main>

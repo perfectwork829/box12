@@ -1,0 +1,67 @@
+/*
+-----------------------------------------------------------------------
+  Footer CSS
+-----------------------------------------------------------------------
+*/
+
+footer {
+  padding: 35px 0 35px;
+  font-size: 16px;
+  font-weight: 500;
+  background: $theme-color;
+  color: $btn_color;
+  .cp{
+    text-align: right;
+    color: $theme-color-text;
+    @media #{$xs-device} {
+      text-align: center;
+    }
+  }
+  ul {
+    margin-bottom: 0;
+    li{
+      display: inline-block;
+      margin-right: 10px;
+      a{
+        display: inline-block;
+        margin-right: 10px;
+        i{
+          font-size: 20px;
+          color: $btn_color;
+        }
+        &:hover{
+          i{
+            color: $white;
+          }
+        }
+      }
+    }    
+  }
+}
+
+html[dir="rtl"]{
+  .widget-social-icons {
+    a {
+      margin-left: 18px;
+      margin-right: 0 !important;
+      &:last-child {
+        margin-right: 0;
+        margin-left: 0;
+      }
+    }
+  }
+  footer {
+    .cp{
+      text-align: left;
+      @media #{$xs-device} {
+        text-align: center;
+      }
+    }   
+    .social-icon{
+      text-align: right;
+      @media #{$xs-device} {
+        text-align: center;
+      }
+    }   
+  }
+}

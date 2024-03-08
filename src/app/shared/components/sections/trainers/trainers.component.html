@@ -1,0 +1,55 @@
+<!--== Start Trainer Area Wrapper ==-->
+<section id="trainers-section" class="team-area team-default-area">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="section-title text-center" data-aos="fade-up" data-aos-duration="1000">
+          <h2 class="title">{{'PROFESSIONAL' | translate}} <span>{{'TRAINERS' | translate}}</span></h2>
+        </div>
+      </div>
+    </div>
+
+    <div class="row justify-content-center ">
+      <div class="col-1 position-relative slider-button" *ngIf="bLangFlag" >
+        <div class="swiper-button-next next-slide position-absolute "  (click)="plusSlides()"></div>
+      </div>
+      <div class="col-1 position-relative slider-button" *ngIf="!bLangFlag" >
+        <div class="swiper-button-prev prev-slide position-absolute"  (click)="plusSlides()"></div>
+      </div>
+      <div class="col-10">
+        <div class="gallery-slider-content">
+          <div class="swiper-container team-slider-container">
+            <div class="swiper-wrapper gallery-slider">
+              <div class="swiper-slide" *ngFor="let trainer of trainers.concat(trainers)">
+                <div class="team-item">
+                  <div class="team-member">
+                    <div class="thumb">
+                      <a class="lightbox-image" data-fancybox="trainer" href="{{trainer.image}}"><img defaultImg src="{{trainer.image}}" alt="Image"></a>
+                    </div>
+                    <div class="content">
+                      <div class="member-info">
+                        <h4 class="name"><a routerLink="trainer/{{trainer.id}}">{{trainer.name}}</a></h4>
+                        <h6 class="designation">{{trainer.training| translate}}</h6>
+                        <div class="team-footer">
+                          <a class="btn" routerLink="trainer/{{trainer.id}}">{{'VIEW PROFILE' | translate}}</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Add the navigation buttons -->            
+          </div>
+        </div>
+      </div>
+      <div class="col-1 position-relative slider-button" *ngIf="bLangFlag" >
+        <div class="swiper-button-prev prev-slide position-absolute "  (click)="previewSlides()"></div>
+      </div>      
+      <div class="col-1 position-relative slider-button" *ngIf="!bLangFlag" >
+        <div class="swiper-button-next next-slide position-absolute "  (click)="previewSlides()"></div>
+      </div>  
+    </div>
+  </div>
+</section>
+<!--== End Trainer Area Wrapper ==-->

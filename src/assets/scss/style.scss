@@ -1,0 +1,91 @@
+// Table of contents
+
+@import 'node_modules/bootstrap/scss/bootstrap';
+
+// Base
+@import "common/variables";
+@import "common/mixins";
+@import "common/rfs";
+
+// Typography
+ @import "common/typography";
+
+// Common Styles
+@import "zymzoo/common";
+@import "zymzoo/navbar";
+
+// Header
+@import "header/header";
+
+// Banner Styles
+@import "zymzoo/banner";
+
+// Components
+@import "zymzoo/about";
+@import "zymzoo/class";
+@import "zymzoo/team";
+@import "zymzoo/gallery";
+@import "zymzoo/service";
+@import "zymzoo/portfolio";
+@import "zymzoo/pricing";
+@import "zymzoo/testimonial";
+@import "zymzoo/brand-logo";
+@import "zymzoo/divider";
+@import "zymzoo/icon-box";
+@import "zymzoo/featured";
+@import "zymzoo/form";
+@import "zymzoo/shop";
+@import "zymzoo/progress-bar";
+@import "zymzoo/products";
+@import "zymzoo/spinner";
+@import "zymzoo/kids_academy";
+@import "zymzoo/profile";
+@import "zymzoo/branches";
+@import "zymzoo/personal-training";
+@import "zymzoo/subscriptions";
+@import "zymzoo/bookings";
+@import "zymzoo/confirm_dialog";
+
+@import "zymzoo/subscsribers";
+@import "zymzoo/workouts";
+@import "zymzoo/exercise";
+@import "zymzoo/policy";
+
+
+// Blog
+@import "zymzoo/blog";
+
+// Contact
+@import "zymzoo/contact";
+
+// Footer
+@import "footer/footer";
+
+@import "bootstrap-extended/variables";
+@import "bootstrap-extended/invoice";
+@import "bootstrap-extended/tables";
+@import "bootstrap-extended/modal";
+@import "bootstrap-extended/forms";
+@import '~bs-stepper/dist/css/bs-stepper.min.css';
+@import 'zymzoo/form-wizard';
+@import '~@ng-select/ng-select/themes/default.theme.css';
+
+@import "customize";
+
+.w-100{
+  width: 100% !important;
+}
+
+.font-size-100{
+  font-size: 100px;
+}
+
+.btn-large{
+  height: 50px;
+}
+
+html[dir='rtl']{
+  span[class='fa fa-arrow-right']{
+    transform: rotate(180deg);
+  }
+}

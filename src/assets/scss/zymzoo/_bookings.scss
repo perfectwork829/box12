@@ -1,0 +1,232 @@
+/*
+-----------------------------------------------------------------------
+  Bookings CSS
+-----------------------------------------------------------------------
+*/
+.bookings-container{  
+  padding-top: 120px;
+  @media #{$xxs-device} {
+    padding-top: 60px;
+  }
+  .personal-training-container{
+    padding-top: 30px;
+  }
+  .dayColor{    
+    color: $theme-color;
+  } 
+  .dangerColor {
+    color: #b6361a;
+  } 
+  .inputbox-label{
+    color: #8e8d91;
+  }
+  .left-button{
+    background-color: $theme-tab-background;
+    // clip-path: polygon(0% 0%, calc(100% - 15px) 0%, 100% 15px ,100% 100%, 15px 100%, 0% calc(100% - 15px));
+    border-radius: 10px;
+    .select-booking-tab{
+      padding: 5px 10px;
+      width: 200px;
+      font-size: 20px;
+      text-align: center;
+      cursor: pointer;
+      color: $theme-color-primary;
+      border-radius: 10px;
+      // clip-path: polygon(0% 0%, calc(100% - 15px) 0%, 100% 15px ,100% 100%, 15px 100%, 0% calc(100% - 15px));
+      @media #{$xxs-device} {
+        width: 150px;
+        font-size: 14px;
+      }
+      &.active{
+        background-color: $theme-color;
+        color: $white-fa;
+      }
+     } 
+  } 
+  .sessions-tab{
+    width: 100%;    
+  }
+  .select-booking-tab-panel{
+    width: max-content;
+    margin: 0 auto;
+  }
+  .appointment-item{    
+    --c: $theme-color;
+    --b: 5px;
+    --g: 5px;
+    padding: calc(var(--g) + var(--b));
+    --_g: #0000 25%,var(--c) 0;
+    background: conic-gradient(from 180deg at top var(--b) right var(--b),var(--_g)) 200% 0 /200% var(--b) no-repeat, conic-gradient( at bottom var(--b) left var(--b),var(--_g)) 0 200%/var(--b) 200% no-repeat;
+    background: conic-gradient(from 180deg at top var(--b) right var(--b),var(--_g)) var(--_i,200%) 0 /200% var(--_i,var(--b)) no-repeat, conic-gradient( at bottom var(--b) left var(--b),var(--_g)) 0 var(--_i,200%)/var(--_i,var(--b)) 200% no-repeat;
+    transition: .3s, background-position .3s .3s;
+    &:hover{
+      --_i: 100%;
+      transition: .3s, background-size .3s .3s;
+    }
+    .pbd-parent{
+      --a0: 0% 15px , 15px 0%;
+      --a1: calc(100% - 15px) 0% , 100% 15px;
+      --a2: 100% calc(100% - 15px) , calc(100% - 15px) 100%;
+      --a3: 15px 100% , 0% calc(100% - 15px);
+      --bgColor: #FFFFFF35;
+      // clip-path: polygon(var(--a0) ,var(--a1) ,var(--a2) ,var(--a3));
+      transition: 0.3s;
+      background-color: #FFFFFF35;
+      &.danger{
+        background-color: #b6361a;
+      }
+      &.primarydays{
+        background-color: $theme-color;
+      }
+      .pbd-child{
+        --a0: 1px 15px , 15px 1px;
+        --a1: calc(100% - 15px) 1px , calc(100% - 1px) 15px;
+        --a2: calc(100% - 1px) calc(100% - 15px),calc(100% - 15px) calc(100% - 1px);
+        --a3: 15px calc(100% - 1px) , 1px calc(100% - 15px);
+        --bgColor: #1b1b1b;
+        --h0: 1px 1px , 1px 1px;
+        --h1: calc(100% - 1px) 1px , calc(100% - 1px) 1px;
+        --h2: calc(100% - 1px) calc(100% - 1px),calc(100% - 1px) calc(100% - 1px);
+        --h3: 1px calc(100% - 1px) , 1px calc(100% - 1px);
+        // clip-path: polygon(var(--a0) ,var(--a1) ,var(--a2) ,var(--a3));
+        border-radius: 10px;
+        // background-color: #1b1b1b;
+        .appointment-classname{
+          .btn-subscribe{
+            background-color: $theme-color-primary;
+            border-radius: 0;
+            color: $white;
+            cursor: auto;
+            font-size: 16px;
+          }
+          .btn-info{
+            background-color: $theme-color-info;
+            border-radius: 0;
+            color: $white;
+            cursor: auto;
+            font-size: 20px;
+            border-radius: 0;
+            &:hover{
+              color: $theme-color-info;
+              background-color: $theme-color-info;
+              border-color: $theme-color-info;
+              color: white;
+            }
+          }
+          .btn-cancel{
+            background-color: $free_danger;
+            border-radius: 0;
+            color: $white;
+            cursor: auto;
+            border-radius: 0;
+            &:hover{
+              color: $free_danger;
+              background-color: $free_danger;
+              border-color: $free_danger;
+              color: white;
+            }
+          }          
+        }
+        .btn-outline-success{          
+          &.btn{            
+            display: inline-block;
+            padding: 0.375rem 0.75rem;            
+            font-size: 16px;                        
+            color: $white;
+            text-align: center;
+            text-decoration: none;
+            vertical-align: middle;
+            cursor:auto;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+            border: 1px solid #198754;
+            border-radius: 0rem;
+            background-color: #198754;
+            transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;                    
+            &:hover{
+              color: #198754;
+              background-color: #198754;
+              border-color: #198754;
+              color: white;
+            }
+          }
+        }
+        .sub-info{
+          .info{
+            .left{
+              display: flex;
+              .item-img{
+                width: 54px;
+                height: 54px;
+                background-repeat: no-repeat;
+                &.active-stand-person-icon{
+                  background-image: url('../../img/icons/active-stand-person.svg');
+                  filter: invert(32%) sepia(39%) saturate(281%) hue-rotate(3deg) brightness(83%) contrast(81%);
+                }
+                &.active-calendar-icon{
+                  background-image: url('../../img/icons/active-calendar.svg');
+                  filter: invert(32%) sepia(39%) saturate(281%) hue-rotate(3deg) brightness(83%) contrast(81%);
+                }
+                &.capman-icon{
+                  background-image: url('../../img/icons/capman.svg');
+                  filter: invert(32%) sepia(39%) saturate(281%) hue-rotate(3deg) brightness(83%) contrast(81%);
+                }
+                &.confirm-icon{
+                  background-image: url('../../img/icons/walker.svg');
+                  filter: invert(32%) sepia(39%) saturate(281%) hue-rotate(3deg) brightness(83%) contrast(81%);
+                }
+              }
+            }
+          }
+        }
+      }      
+    }
+    .appointment-info{
+      .left{
+        // clip-path: polygon(1px 15px, 15px 1px, calc(100% - 1px) 1px, calc(100% - 1px) 1px, calc(100% - 1px) calc(100% - 15px), calc(100% - 15px) calc(100% - 1px), 1px calc(100% - 1px), 1px calc(100% - 1px));
+        // background: #252525;        
+        .item-img{
+          background-position: center center;
+        }
+      }
+    }
+    .item-class-title{
+      font-size: $close-font-size;
+    }
+    &:last-child{
+      margin-bottom: 10px;
+    }
+  }  
+}
+.booking-review-box-list{
+  display: flex;
+  justify-content: space-between;
+  .star-review-item{
+    .star-pbd-parent{
+      // clip-path: polygon(0% 0px, 0px 0%, calc(100% - 15px) 0%, 100% 15px, 100% 100%, 100% 100%, 15px 100%, 0% calc(100% - 15px));
+      background: #ffffff35;
+      .star-pbd-child{
+        // clip-path: polygon(1px 1px, 1px 1px, calc(100% - 15px) 1px, calc(100% - 1px) 15px, calc(100% - 1px) calc(100% - 1px), calc(100% - 1px) calc(100% - 1px), 15px calc(100% - 1px), 1px calc(100% - 15px));
+        // background-color: #1b1b1b; 
+      }
+    }
+    .star-label{
+      width: 56px;
+      height: 56px;
+      @media #{$xxs-device} {
+        width: 50px;
+        height: 50px;
+      }
+    }
+    &.active{
+      .star-label{
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 50% 50%;
+        background-image: url(/assets/img/icons/star.svg);
+        filter: invert(32%) sepia(39%) saturate(281%) hue-rotate(3deg) brightness(83%) contrast(81%);
+      }
+    }
+  }
+}

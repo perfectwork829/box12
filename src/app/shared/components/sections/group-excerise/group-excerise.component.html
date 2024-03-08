@@ -1,0 +1,24 @@
+<!--== Start workout Area ==-->
+<section id="{{section}}-section" class="excercise-default-area title-bar">
+  <div class="container">    
+    <div class="row">
+      <div class="col-md-12 d-flex justify-content-center ">
+        <h3 class="title">{{'group exercise' | translate}}</h3>
+      </div>
+    </div>
+    <!-- <div class="divider"></div> -->
+    <div class="row">
+      <div class="col-sm-12 col-lg-4 mb-4" *ngFor="let item of exercises">
+        <div class="icon-box text-center d-flex flex-column align-content-center flex-wrap boxshadow-custom3">
+          <div class="icon flex mx-auto mb-20">
+            <h4 class="custom-color2">{{item.name}}</h4>
+          </div>
+          <p class="text-body-color">
+            {{item.description | translate}}
+          </p>   
+        </div>            
+      </div>
+    </div>
+  </div>
+</section>
+<!--== End workout Area ==-->

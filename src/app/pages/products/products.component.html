@@ -1,0 +1,4 @@
+<main class="main-content">  
+  <app-spinner></app-spinner>
+  <app-product-item [config]="config" [subscriptions]="subscriptions" [personalTrainings]="personalTrainings" *ngIf="subscriptions?.length" (onSubscriptionSelected)="onBuyProduct($event)"></app-product-item>  
+</main>

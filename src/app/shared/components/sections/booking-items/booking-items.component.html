@@ -1,0 +1,116 @@
+<!--== Start Booking Item Area ==-->
+<section id="classes-section" class="bookings-container">
+  <div class="container">
+    <div class="front-page page-container">
+      <div class="page-title mb-5 mt-5 section-title">
+        <h3 class="title-size gwTColor text-center title"><span>{{'Sessions'|translate}}</span></h3>
+      </div>
+      <div class="select-booking-tab-panel">
+        <div class="left-button">
+          <div class="p-1 d-flex">
+            <div class="appointments-tab select-booking-tab" [ngClass]="{'active' : selected_tab == 1}" (click)="selectTab(1)">{{'bookings'|translate}}</div>
+            <div class="sessions-tab select-booking-tab" [ngClass]="{'active' : selected_tab == 2}" (click)="selectTab(2)">{{'Sessions'|translate}}</div>
+          </div>
+        </div>        
+      </div>
+      <ng-container *ngIf="selected_tab == 1; else elseTab">
+        <div class="appointments-tab mt-4">
+          <div class="appointments-list row">
+            <div class="appointment-item col-md-6 col-12" *ngFor="let appointment of appointmentlist ; let i = index">
+              <div class="pbd-parent">
+                <div class="pbd-child boxshadow-custom1">
+                  <div class="appointment-card p-3 text-align">
+                    <div class="p-2">
+                      <div class="appointment-classname gwTColor mb-3 mt-3">
+                          <div [ngSwitch]="appointment.status">
+                            <div *ngSwitchCase="'completed'">
+                              <div class="btn btn-outline-success text-capitalize ">{{'completed'|translate}}</div>
+                            </div>
+                            <div *ngSwitchCase="'pending'">
+                              <div class="btn btn-info text-capitalize ">{{'missed'|translate}}</div>
+                            </div>
+                            <div *ngSwitchCase="'created'">
+                              <div class="btn btn-subscribe text-capitalize ">{{'created'|translate}}</div>
+                            </div>
+                            <div *ngSwitchCase="'cancelled'">
+                              <div class="btn btn-cancel text-capitalize ">{{'cancelled'|translate}}</div>
+                            </div>
+                          </div>
+                      </div>
+                      <div class="appointment-classname gdTColor text-center item-class-title" *ngIf="!isLangflag">
+                        <h3>{{appointment.english_class_name}}</h3>
+                      </div>
+                      <div class="appointment-classname gdTColor item-class-title" *ngIf="isLangflag">
+                        <h3>{{appointment.arabic_class_name}}</h3>
+                      </div>
+                      <div class="appointment-info gdTColor">
+                        <div class="sub-info">
+                          <div class="info mb-2 d-flex align-items-center">
+                            <div class="left icon">
+                              <div class="item-img type-icon boxshadow-custom4 active-stand-person-icon"></div>
+                            </div>
+                            <span class="mx-3">#{{appointment.id}}</span>
+                          </div>
+                          <div class="info mb-3 d-flex align-items-center ">
+                            <div class="left icon">
+                              <div class="item-img type-icon boxshadow-custom4 active-calendar-icon"></div>
+                            </div>
+                            <span class="mx-3">{{appointment.start_time | dateFilter : 'FullTime'}} - {{appointment.end_time | dateFilter : 'FullTime'}}</span>
+                          </div>
+                        </div>
+                        <div class="sub-info">
+                          <div class="info mb-2 d-flex align-items-center ">
+                            <div class="left icon">
+                              <div class="item-img type-icon boxshadow-custom4 capman-icon"></div>
+                            </div>
+                            <span class="mx-3">{{appointment.trainer_name}}</span>
+                          </div>
+                          <div class="info mb-3 d-flex align-items-center ">
+                            <div class="left icon">
+                              <div class="item-img type-icon boxshadow-custom4 active-calendar-icon"></div>
+                            </div>
+                            <span class="mx-3">{{appointment.class_session?.session_date}}</span>
+                          </div>
+                        </div>
+                      </div>                      
+                      <div *ngIf = "appointment.status=='completed'" class="mt-3 apply-btn" (click) = "rateBooking.emit(appointment)">
+                        <div  class="text-center">
+                          <div class="pbd-parent1 primarydays">
+                            <div class="pbd-child1">
+                              <div class="btn btn-rate p-1 w-100">{{'Rate review'|translate}}</div>
+                            </div>
+                          </div>                          
+                        </div>
+                      </div>                                          
+                      <div *ngIf = "appointment.status=='created'" class="mt-3 cancel-btn" (click) = "cancelBooking.emit(appointment)">
+                        <div  class="text-center" >
+                          <div class="pbd-parent1 danger">
+                            <div class="pbd-child1">
+                              <div class="btn btn-cancel p-1 w-100">{{'Cancel' | translate}}</div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>                
+              </div>
+            </div>
+            <div *ngIf="appointmentlist.length === 0">          
+              <p class="text-center">{{'no_booking_available' | translate}}</p>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+      <ng-template #elseTab>
+        <div class="sessions-tab">          
+          <div class="sessions-list row">
+            <app-personal-training-item  [personalTrainings] = "sessionlist" [bBlock]="false" 
+            (changeDate)="receiveSessionDate($event)"></app-personal-training-item>
+          </div>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+</section>
+<!--== End Booking Item Area ==-->

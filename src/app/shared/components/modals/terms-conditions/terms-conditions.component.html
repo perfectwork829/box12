@@ -1,0 +1,24 @@
+<!--== Start Terms Conditions modal ==-->
+<div class="modal-header">
+  <h4 class="modal-title text-primary">
+    <img class="logo-main" src="assets/img/logo.png" alt="Logo" />
+  </h4>
+    <button type="button" class="btn btn-dark" (click)="onClose()" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+  <div class="container notification-modal pb-70">    
+    <div class="row">
+      <div class="col-12">
+        <h4 class="text-center">{{'terms_and_conditions1' | translate}}</h4>
+      </div>
+    </div>
+    <div class="row">      
+      <div class="col-md-12">
+        <pre>{{termsConditions}}</pre>
+      </div>
+    </div>
+  </div>
+</div>
+<!--== End Terms Conditions modal ==-->

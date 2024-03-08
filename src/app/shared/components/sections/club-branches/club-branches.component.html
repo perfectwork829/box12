@@ -1,0 +1,124 @@
+<!--== Start Club Branches Area ==-->
+<app-spinner></app-spinner>
+<main class="main-content">  
+  <section class="membership branches-container">
+    <div class="container">
+      <div class="page-title mb-5 mt-5 section-title">
+        <h3 class="gwTColor title text-center"><span>{{'Club branches'|translate}}</span></h3>
+      </div>
+      <div class="row">
+        <div class="col-md-6 col-12 mb-3">
+          <div class="input-group">
+            <span class="input-group-addon">
+              <i class="glyphicon glyphicon-user"></i>
+            </span>
+            <input id="search_city" type="text" class="form-control" name="search_city" placeholder="{{'Search_city'|translate}}" (input)="onSearchBranch($event.target.value)" >
+          </div>   
+          <div>
+            <app-club-branches-item [selectItem]="selectedBranch" [club]="club" (loadClub) = "loadClub($event)" *ngFor="let club of branches;let i = index"></app-club-branches-item>
+          </div>       
+        </div>
+        <div class="col-md-6 col-12 mb-3">
+          <ng-container *ngIf="cOption; else clubTemplate">
+            <div class="club-detail p-3 p-md-4 text-align boxshadow-custom6">
+              <h4 class="subtitle-size gdTColor mb-5">{{'Club_details'|translate}}</h4>              
+              <h3 class="club-name smalltitle-size mb-5 en-text" *ngIf="IsArabic">{{selectedBranch?.name_ar}}</h3>
+              <h3 class="club-name smalltitle-size mb-5 en-text" *ngIf="!IsArabic">{{selectedBranch?.name_en}}</h3>
+              <div class="club-info row">
+                  <div class="col-6 item ">
+                      <div class="left icon pbd-parent">
+                        <div class="pbd-child">
+                          <div class="item-img type-icon boxshadow-custom4 active-stand-person-icon"></div>
+                        </div>
+                      </div>
+                      <div class="item-desc">
+                          <span class="label">{{'branch type'| translate}}</span>
+                          <span class="value">{{selectedBranch?.branch_category}}</span>
+                      </div>
+                  </div>
+                  <div class="col-6 item">
+                      <div class="left icon pbd-parent">
+                        <div class="pbd-child">
+                          <div class="item-img type-icon boxshadow-custom4 active-stand-person-icon"></div>
+                        </div>
+                      </div>
+                      <div class="item-desc">
+                          <span class="label">{{'absorptive capacity'|translate}}</span>
+                          <span class="value">{{selectedBranch?.branch_capacity}}</span>
+                      </div>
+                  </div>
+                  <div class="col-6 item">
+                      <div class="left icon pbd-parent">
+                        <div class="pbd-child">
+                          <div class="item-img type-icon boxshadow-custom4 active-branch-icon"></div>
+                        </div>
+                      </div>
+                      <div class="item-desc">
+                          <span class="label">{{'branch'|translate}}</span>
+                          <span class="value">{{selectedBranch?.location_type}}</span>
+                      </div>
+                  </div>
+                  <div class="col-6 item">
+                      <div class="left icon pbd-parent">
+                        <div class="pbd-child">
+                          <div class="item-img type-icon boxshadow-custom4 active-calendar-icon"></div>
+                        </div>
+                      </div>
+                      <div class="item-desc">
+                          <span class="label">{{'launch date'|translate}}</span>
+                          <span class="value">{{selectedBranch?.startup_date}}</span>
+                      </div>
+                  </div>
+              </div>
+              <div class="club-address pt-4 pb-2">
+                  <h5>{{'Club address'|translate}}</h5>
+                  <p class="gdTColor" *ngIf="!IsArabic">{{selectedBranch?.address1}}</p>
+                  <p class="gdTColor" *ngIf="IsArabic">{{selectedBranch?.address2}}</p>
+              </div>
+              <div class="club-email pt-4 pb-2 mb-4">
+                  <h5>{{'Email'|translate}}</h5>
+                  <p class="gdTColor">{{selectedBranch?.email}}</p>
+              </div>
+              <div class="d-flex justify-content-center btn-club flex-row gap-3">
+                <a class="contact-btn-wrap btn button mt-3 " href="tel:{{selectedBranch?.phone}}">
+                  <div class="">{{'club connection'|translate}}</div>                  
+                </a>
+                <button type="button" class="btn btn-back mt-3 " [routerLink] = "'/profile'">Back</button>   
+              </div>
+            </div>
+          </ng-container>
+          <ng-template #clubTemplate>
+            <h4 class="subtitle-size mb-5">{{'share_evaluation'|translate}}</h4>
+            <h3 class="club-name smalltitle-size mb-4 text-body-color" *ngIf="!IsArabic">{{selectedBranch?.name_ar}}</h3>
+            <h3 class="club-name smalltitle-size mb-4 text-body-color" *ngIf="IsArabic">{{selectedBranch?.name_en}}</h3>
+            <h4 class="smallSubtitle-size mb-5 gdTColor">{{'share_assessnment'|translate}}</h4>
+            <div class="club-review-box-list booking-review-box-list">
+              <div (click) = "review(number)" *ngFor="let number of [1,2,3,4,5]">
+                <div class="left" class="star-review-item" [ngClass]="{'active': number<=reviewStar}">
+                  <div class="star-pbd-parent">
+                    <div class="star-pbd-child">
+                      <div class="star-label"></div>
+                    </div>
+                </div> 
+                </div>
+              </div>              
+            </div>
+            <div class="comment-wrap mt-4">
+              <h5 class="tsSize gdTcolor mb-2">{{'comments'|translate}}</h5>
+              <div class="form-group">
+                  <textarea class="inputbox comment-box" placeholder="{{'Write here the details' | translate}}"></textarea>
+              </div>
+            </div>
+            <div class="approval mt-4">
+              <div class="form-group flex-row gap-3">
+                  <button type="button" class="btn button" [class.loading]="submitting" (click)="rateSession()"><span>{{'Evaluation approval'|translate}}</span></button>
+                  <button type="button" class="btn btn-back" [routerLink] = "'/profile'">Back</button>   
+              </div>
+            </div>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+<!--== End Club Branches Area ==-->

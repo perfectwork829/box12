@@ -1,0 +1,94 @@
+/* Heebo font family */
+/* @import url("https://fonts.googleapis.com/css2?family=Heebo:wght@100;200;300;400;500;600;700;800;900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"); */
+@font-face {
+	font-family: 'Josefin Sans';
+	font-style: italic;
+	font-weight: normal;
+	font-display: auto;
+	src: url('../fonts/JosefinSans-fonts/JosefinSans-RegularItalic.ttf') format('truetype');
+}
+@font-face {
+	font-family: 'Josefin Sans';
+	font-style: normal;
+	font-weight: bold;
+	font-display: auto;
+	src: url('../fonts/JosefinSans-fonts/JosefinSans-Bold.ttf') format('truetype');
+}
+@font-face {
+	font-family: 'Josefin Sans';
+	font-style: italic;
+	font-weight: bold;
+	font-display: auto;
+	src: url('../fonts/JosefinSans-fonts/JosefinSans-BoldItalic.ttf') format('truetype');
+}
+@font-face {
+	font-family: 'Josefin Sans';
+	font-style: normal;
+	font-weight: 200;
+	font-display: auto;
+	src: url('../fonts/JosefinSans-fonts/JosefinSans-Light.ttf') format('truetype');
+}
+@font-face {
+	font-family: 'Josefin Sans';
+	font-style: italic;
+	font-weight: 200;
+	font-display: auto;
+	src: url('../fonts/JosefinSans-fonts/JosefinSans-LightItalic.ttf') format('truetype');
+}
+@font-face {
+	font-family: 'Josefin Sans';
+	font-style: normal;
+	font-weight: 600;
+	font-display: auto;
+	src: url('../fonts/JosefinSans-fonts/JosefinSans-SemiBold.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: 'Brandon Grotesque';
+	font-style: italic;
+	font-weight: normal;
+	font-display: auto;
+	src: url('../fonts/Brandon-grotesque-fonts/brandon-grotesque-regular-italic.otf') format('truetype');
+}
+@font-face {
+	font-family: 'Brandon Grotesque';
+	font-style: normal;
+	font-weight: bold;
+	font-display: auto;
+	src: url('../fonts/Brandon-grotesque-fonts/brandon-grotesque-black.otf') format('truetype');
+}
+@font-face {
+	font-family: 'Brandon Grotesque';
+	font-style: italic;
+	font-weight: bold;
+	font-display: auto;
+	src: url('../fonts/Brandon-grotesque-fonts/brandon-grotesque-bold-italic.otf') format('truetype');
+}
+@font-face {
+	font-family: 'Brandon Grotesque';
+	font-style: normal;
+	font-weight: 200;
+	font-display: auto;
+	src: url('../fonts/Brandon-grotesque-fonts/brandon-grotesque-light.otf') format('truetype');
+}
+@font-face {
+	font-family: 'Brandon Grotesque';
+	font-style: italic;
+	font-weight: 200;
+	font-display: auto;
+	src: url('../fonts/Brandon-grotesque-fonts/brandon-grotesque-light-italic.otf') format('truetype');
+}
+@font-face {
+	font-family: 'Brandon Grotesque';
+	font-style: normal;
+	font-weight: 600;
+	font-display: auto;
+	src: url('../fonts/Brandon-grotesque-fonts/brandon-grotesque-medium-italic.otf') format('truetype');
+}
+@font-face {
+	font-family: 'Brandon Grotesque';
+	font-style: italic;
+	font-weight: 600;
+	font-display: auto;
+	src: url('../fonts/Brandon-grotesque-fonts/brandon-grotesque-thin-italic.otf') format('truetype');
+}

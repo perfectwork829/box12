@@ -1,0 +1,244 @@
+<!--== Start Profile modal ==-->
+<div class="modal-header">
+  <h4 class="modal-title text-primary">
+    <img class="logo-main" src="assets/img/logo.png" alt="Logo" />
+  </h4>
+    <button type="button" class="btn btn-dark" (click)="onClose()" aria-label="Close" *ngIf="segment==='menu'">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  <button type="button" class="btn btn-dark" (click)="segment='menu'" aria-label="Close" *ngIf="segment!=='menu'">
+    <span aria-hidden="true" class="fa fa-arrow-right"></span>
+  </button>
+</div>
+<div class="modal-body">
+
+  <div class="container pb-30" *ngIf="segment==='menu'">    
+    <div class="row">
+      <div class="col-lg-7 m-auto">
+        <div class="login-bottom">
+          <div class="login-form-content tab-content">
+            <div class="tab-pane fade show active">
+              <div class="login-form">
+                <div class="login-form-wrapper">
+                  <div class="row">
+                    <div class="col-12 text-center pb-10">
+                      <i class="fa fa-user-circle text-primary font-size-100"></i>
+                    </div>
+                    <div class="col-12">
+                      <h5 class="text-center pb-0 mb-0 text-uppercase">{{config.isArabic? user.arabic_name: user.english_name}}</h5>
+                      <p class="text-center text-muted pt-0 mt-0">{{user.mobile}}</p>
+                    </div>
+                  </div>
+                  <div class="row mt-3">
+                    <div class="col-md-12 mb-2">
+                      <div class="card btn btn-light" (click)="onSegmentChange('profile')">
+                        <div class="card-body">
+                          <p class="font-size-16 d-flex gap-2 align-items-center">
+                            <i class="fa fa-user-circle-o font-size-24"></i>
+                            {{'My Profile' | translate}}
+                          </p>
+                        </div>
+                      </div>
+                    </div>                    
+
+                    <div class="col-md-12 mb-2">
+                      <div class="card btn btn-light" (click)="onSegmentChange('membership')">
+                        <div class="card-body">
+                          <p class="font-size-16 d-flex gap-2 align-items-center">
+                            <i class="fa fa-id-card-o font-size-24"></i>
+                            {{'My Membership' | translate}}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-12 mb-2">
+                      <div class="card btn btn-light" (click)="onSegmentChange('logout')">
+                        <div class="card-body">
+                          <p class="font-size-16 d-flex gap-2 align-items-center">
+                            <i class="fa fa-sign-out font-size-24"></i>
+                            {{'Logout' | translate}}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container" *ngIf="segment==='profile'">
+    <div class="row">
+      <div class="col-12">
+        <h3 class="text-center">{{'My Profile' | translate}}</h3>
+      </div>
+    </div>
+    <div class="row mt-25 mb-25">
+      <div class="col-12">
+          <div class="row">
+            <div class="form-group col-md-6">
+              <label class="form-label" for="mobile">{{'First Name' | translate}}</label>
+              <input
+                [(ngModel)]="user.english_name"
+                #TDEnglishNameRef="ngModel"
+                required
+                name="english_name"
+                type="text"
+                id="english_name"
+                class="form-control"
+              />
+              <span *ngIf="TDEnglishNameRef.invalid" class="invalid-form">
+                    <small class="form-text text-danger" *ngIf="TDEnglishNameRef.errors?.required">{{'This field is required!' | translate}}</small>
+              </span>
+            </div>
+            <div class="form-group col-md-6">
+              <label class="form-label" for="email">{{'Last Name' | translate}}</label>
+              <input
+                [(ngModel)]="user.arabic_name"
+                #TDArabicNameRef="ngModel"
+                required
+                type="text"
+                name="arabic_name"
+                id="arabic_name"
+                class="form-control"
+              />
+              <span *ngIf="TDArabicNameRef.invalid" class="invalid-form">
+                <small class="form-text text-danger" *ngIf="TDArabicNameRef.errors?.required">{{'This field is required!' | translate}}</small>
+              </span>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="form-group col-md-6">
+              <label class="form-label" for="id-number">{{'National ID' | translate}}</label>
+              <input
+                disabled
+                [(ngModel)]="user.national_id"
+                #TDNationalIDRef="ngModel"
+                numberValidate
+                required
+                type="text"
+                name="national_id"
+                id="id-number"
+                class="form-control"
+                [placeholder]="'Enter National ID' | translate"
+              />
+              <span *ngIf="TDNationalIDRef.invalid" class="invalid-form">
+                      <small class="form-text text-danger" *ngIf="TDNationalIDRef.errors?.required">{{'This field is required!' | translate}}</small>
+                </span>
+            </div>
+            <div class="form-group col-md-6">
+              <label class="form-label" for="date-of-birth">{{'Date Of Birth' | translate}}</label>
+              <input
+                [(ngModel)]="user.dob"
+                #TDDateOfBirthRef="ngModel"
+                required
+                name="dob"
+                type="date"
+                id="date-of-birth"
+                class="form-control"
+              />
+              <span *ngIf="TDDateOfBirthRef.invalid" class="invalid-form">
+                  <small class="form-text text-danger" *ngIf="TDDateOfBirthRef.errors?.required">{{'This field is required!' | translate}}</small>
+              </span>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="form-group col-md-6">
+              <label class="form-label" for="mobile">{{'Mobile Number' | translate}}</label>
+              <input
+                [(ngModel)]="user.mobile"
+                #TDMobileRef="ngModel"
+                required
+                numberValidate
+                name="mobile"
+                id="mobile"
+                class="form-control"
+                placeholder="05XXXXXXXX"
+              />
+              <span *ngIf="TDMobileRef.invalid" class="invalid-form">
+                      <small class="form-text text-danger" *ngIf="TDMobileRef.errors?.required">{{'This field is required!' | translate}}</small>
+                </span>
+            </div>
+            <div class="form-group col-md-6">
+              <label class="form-label" for="email">{{'Email' | translate}}</label>
+              <input
+                [(ngModel)]="user.email"
+                #TDEmailRef="ngModel"
+                required
+                email
+                type="email"
+                name="email"
+                id="email"
+                class="form-control"
+                placeholder="example@email.com"
+              />
+              <span *ngIf="TDEmailRef.invalid" class="invalid-form">
+                    <small class="form-text text-danger" *ngIf="TDEmailRef.errors?.required">{{'This field is required!' | translate}}</small>
+              </span>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-12">
+              <div class="form-group form-group-info text-center">
+                <button class="btn btn-primary btn-large w-100 font-size-20" (click)="onUpdate()">{{'Update' | translate}}</button>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container pb-30" *ngIf="segment==='membership'">    
+    <app-spinner></app-spinner>    
+    <div class="row">
+      <div class="col-lg-12 m-auto">
+        <h3 class="text-center">{{'My Membership' | translate}}</h3>
+        <div class="login-bottom">
+          <div class="login-form-content tab-content">
+            <div class="tab-pane fade show active">
+              <div class="login-form">
+                <div class="login-form-wrapper">                                                      
+                  <div class="row mt-3">
+                    <div *ngIf="memberships_list.length; else noMembership">
+                      <div class="col-md-12 mb-2" *ngFor="let membership of memberships_list;let i = index">
+                        <div class="card btn btn-light">
+                          <div class="card-body">
+                            <ng-container *ngIf="bLangFlag; else arabic_box">
+                              <h6 class="mb-0">
+                                {{membership.product_arabic_name | translate}}
+                              </h6>
+                              <span>{{membership.start_date | dateFilter : 'dateText'}}-{{membership.end_date | dateFilter : 'dateText'}}</span>
+                            </ng-container>  
+                            <ng-template #arabic_box>
+                              <h6 class="mb-0">
+                                {{membership.product_english_name | translate}}
+                              </h6>
+                              <span>{{membership.start_date | dateFilter : 'dateText'}}-{{membership.end_date | dateFilter : 'dateText'}}</span>
+                            </ng-template>                              
+                          </div>
+                        </div>
+                      </div>      
+                    </div>
+                    <ng-template #noMembership>
+                      <div class="col-md-12 mb-2">
+                        <p class="text-center">{{'no_membership_available' | translate}}</p>
+                      </div>
+                    </ng-template>  
+                  </div>                  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--== End Profile modal ==-->

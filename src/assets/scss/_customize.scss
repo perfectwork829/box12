@@ -1,0 +1,387 @@
+
+body{
+  background-color: $theme-color-white;
+}
+.btn-dark{
+  background-color: $theme-color-primary;
+}
+.btn-dark:hover{
+  background-color: $grey_cancel;
+}
+.col-xs-10{  
+  @media #{$xs-device} {    
+    width: 80%;
+  }
+}
+.modal{
+  .modal-title{
+    img{
+      width: 106px;
+    }
+  }
+  .modal-content{
+    background-color: $theme-color-white;
+    background-image: none;    
+    label{
+      color: $theme-color-text;
+    }
+    .login-form-content{
+      .tab-pane {
+        .login-form{
+          .login-form-wrapper{
+            .btn{
+              color: $theme-color-text;
+            }
+            .form-group{
+              .btn-forgot{
+                color: $theme-color-text;
+              }
+              input{
+                &:placeholder{
+                  line-height: 40px; 
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.horizontal-scrollable.row {
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.horizontal-scrollable.row > .col-lg-3 {
+  display: inline-block;
+  float: none;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+.scroll-row {
+  justify-content: flex-start;
+  flex-wrap: nowrap;
+  overflow-x: scroll !important;
+  overflow-y: hidden;
+  white-space: nowrap;
+  scroll-behavior: smooth;
+  .scroll-col {
+    display: flex;
+    flex-wrap: nowrap;
+  }
+}
+
+.text-primary{
+  color: $theme-color !important;
+}
+.header-area.header-default{
+  .header-action-area{
+    .notification-icon{
+      font-size: 25px;
+    }
+  }
+} 
+
+.modal-content{
+  .notification-modal{
+    .card{
+      border-radius: 0;
+      border: none;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.175);
+    }
+  }  
+}
+
+
+.text-gray{
+  color: $black-555 !important;
+}
+
+.branch-body{
+  display: flex;
+  margin-bottom: 16px;
+  .branch-icon{
+    width: 40px;
+    height: 40px;
+    background-color: $black;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 50% 50%;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    border-radius: 5px;
+    i{
+      font-size: 25px;
+      color: white;
+    }
+  }
+  .branch-info{
+    display: flex;
+    flex-direction: column;
+    margin: 0 12px;
+    .branch-title{
+      padding: 0;
+      margin: 0;
+      font-size: 16px;
+      color: $black;
+    }
+    .branch-subtitle{
+      text-transform: capitalize;
+      font-size: 14px;
+      color: $theme-color-text;
+      padding: 0;
+      margin: 0;
+    }
+  }
+}
+
+.ng-select {
+  .ng-select-container {
+    border-radius: 0 !important;
+    border: none !important;
+    min-height: unset !important;
+    align-items: flex-start;
+  }  
+  &.ng-select-single{
+    .ng-select-container{
+      height: 45px;
+      .ng-value-container {
+        .ng-input{
+          top: 0;
+        }
+      }
+    }
+  }
+}
+
+.bg-primary{
+  background-color: $theme-color !important;
+  color: white !important;
+}
+
+.btn-primary{
+  background-color: $theme-color !important;
+  border-color: unset !important;
+  color: $white;
+  &:hover{
+    background-color: $white !important;
+    border: 1px solid $theme-color !important;
+    background-image: none!important;
+    color: $theme-color;
+  }
+  &:active{
+    color: $theme-color !important;
+  }
+}
+
+.btn-secondary{
+  background-color: rgba(153, 153, 153, 0.12) !important;
+  color:$theme-color-text !important;
+  border: 0!important;
+}
+.btn-secondary:hover{
+  background-color: $theme-color-primary !important;;
+  color:white !important;;
+  border-color: unset !important;;
+}
+
+.goSell-container{
+  height: 50%;
+  width: 50%;
+}
+.home-default-wrapper{
+  .swiper-button-next, .swiper-button-prev{
+    color: $theme-color-primary;
+    background-image: none;
+  }
+} 
+.pop_branch_info{
+  padding: 0px 15px 5px 0px;
+}
+.widget-social-icons{
+  .icons-widget{
+    background: none;
+  }
+}
+.slider-button{
+  width: 30px;
+}
+.noti-date{
+  p{
+    font-size: 14px;
+  }  
+}
+.main-content{
+  min-height: 653px;
+}
+
+.share_evaluation{
+  .contact-form{
+    .form-group{
+      .btn-theme{
+        width: 160px; 
+      }
+    }    
+  }
+  .section-title{
+    margin-bottom: 40px;
+  }
+}
+
+.swal2-popup{
+  .swal2-html-container{
+    font-size: 20px;
+  }
+}
+
+.invoice-preview{
+  table{
+    td{
+      span{
+        color: $theme-color-text;
+      }
+    }
+    tr{
+      th{
+        color: $theme-color-primary;
+      }
+    }
+  }
+}
+.language-form{  
+  .card{
+    border: 1px solid $theme-color;
+  }  
+  .bg-primary{
+    &:hover{
+      background: transparent;
+      color: $theme-color;
+      border: 1px solid $theme-color;
+    }
+  }
+}
+.freeze-modal{
+  .section-title{
+    @media #{$sm-device} {
+      margin-bottom: 25px;
+    }
+    @media #{$xs-device} {
+      margin-bottom: 20px;
+    }
+  }
+}
+.bg-primary{
+  small{
+    &.text-body{
+      color: white !important;
+    }    
+  }
+  h5{
+    color: white !important;
+  }
+}
+footer{
+  .social-icon{
+    text-align: left;
+    @media #{$xs-device} {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+  }  
+}
+.modal-body{
+  .horizontal-wizard{
+    margin-bottom: 0;
+  }
+}
+.cursor-pointer{
+  i.fa-check{    
+    color: grey;
+    opacity: 0.1;
+  }
+}
+.verified_clickable{  
+  .cursor-pointer{
+    background: $theme-color;
+    cursor: pointer;
+    i{
+      color: $white;
+      opacity: 1;
+    }
+  }    
+}
+
+.agree_terms_conditions{
+  .term_agree{
+    input[type="checkbox"] {
+      appearance: none;
+      background-color: #fff;
+      margin: 0;
+      font: inherit;
+      color: currentColor;
+      width: 17px;
+      height: 17px;
+      border: 0.15em solid currentColor;
+      border-radius: 0.15em;
+      transform: translateY(-0.075em);
+      display: grid;
+      place-content: center;
+      &:before{
+        content: "";
+        width: 0.65em;
+        height: 0.65em;
+        transform: scale(0);
+        transition: 120ms transform ease-in-out;
+        box-shadow: inset 1em 1em $theme-color;
+      }
+      &:checked{
+        &::before {
+          transform: scale(1);
+        }
+      }
+    }
+  }
+  .terms-conditions-btn{
+    color: $theme-color;
+    cursor: pointer;
+  }
+}
+.reactangle-border{
+  border-radius: 0;
+}
+
+#gender-selection{
+  .card{
+    img{
+      width: auto;
+    }    
+  }
+}
+.referral-code{
+  .form-group{
+    .form-control{
+      padding: 0px 8px;
+    }
+  } 
+}
+
+.dangerColor{
+  background: $red_grey;
+  color: $white;
+  font-size: 20px;
+  &:hover{
+    background-color: $grey_cancel;
+    border-color: $grey_cancel;
+    color: $white;
+  }
+}
+.explain-book{
+  margin: 10px 0;
+}

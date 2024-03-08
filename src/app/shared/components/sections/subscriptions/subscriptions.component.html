@@ -1,0 +1,58 @@
+<!--== Start Subscriptions Area Wrapper ==-->
+<section class="subscriptions-container">
+  <div class="container">
+    <div class="front-page page-container">
+      <div class="page-title mb-5 mt-5 section-title">
+        <h3 class="title-size gdTColor text-center title"><span>{{'subscriptions1' | translate}}</span></h3>
+      </div>
+      <div class="subs-lists row">
+        <div class="col-md-6 col-12" *ngFor="let subs of memberships ;let i = index">
+          <div class="subs-item boxshadow-custom1">
+            <div class="subs-content p-3 text-align">
+              <div class="sub-info mt-3">
+                <div class="sub-name gdTColor normal-size en-text" *ngIf="!bLang">{{subs.product_english_name}}</div>
+                <div class="sub-name gdTColor normal-size ar-text" *ngIf="bLang">{{subs.product_arabic_name}}</div>                
+                <div class="gdTColor tnSize">
+                  <div class="left 3days">
+                    <!-- {btn-success: subs.status==='active'} -->                    
+                    <button class="btn reactangle-border" [ngClass]="subs.status === 'active' ? 'btn-success' : 'btn-cancel'">{{subs.status | translate}}</button>
+                  </div>
+                </div>
+              </div>
+              <div class="sub-info mt-3">
+                <div class="gdTColor tnSize">{{'register_price' | translate}}</div>
+                <div class="gdTColor tnSize">{{subs.price}}{{' '}}{{'SAR' | translate}}</div>
+              </div>
+              <div class="sub-info">
+                <div class="gdTColor tnSize">{{'Starting date' | translate}}</div>
+                <div class="gdTColor tnSize">{{subs.start_date | dateFilter : 'dateText'}}</div>
+              </div>
+              <div class="sub-info">
+                <div class="gdTColor tnSize">{{'Expiration date' | translate}}</div>
+                <div class="gdTColor tnSize">{{subs.end_date | dateFilter : 'dateText'}}</div>
+              </div>
+              <div class="submit mt-2 d-flex flex-row gap-4 justify-content-end">
+                <div class="left 3days" *ngIf="subs.status == 'freeze'">
+                  <button class="btn btn-subscribe" (click)="onreactivateSubscription.emit(subs)">{{'reactive_subscription' | translate}}</button>
+                </div>
+                <div class="left danger" *ngIf="subs.status == 'active'">
+                  <button class="btn btn-cancel" (click)="onsuspendSubscription.emit(subs)">{{'Freeze' | translate}}</button>
+                </div>
+                <!-- <div class="right danger" *ngIf="subs.status == 'active'">
+                  <button class="btn dangerColor tnSize" (click)="oncancelSubscription.emit(subs)">{{'Cancel' | translate}}</button>
+                </div> -->
+                <!-- <div class="right danger" *ngIf="subs.status == 'active'">
+                  <button class="btn dangerColor tnSize" (click)="oncancelSubscription.emit(subs)">{{'Cancel' | translate}}</button>
+                </div> -->
+              </div>              
+            </div>
+          </div>
+        </div>
+        <div *ngIf="memberships.length === 0">          
+          <p class="text-center">{{'no_membership_available' | translate}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!--== End Subscriptions Area Wrapper ==-->

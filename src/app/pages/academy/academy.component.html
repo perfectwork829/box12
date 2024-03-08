@@ -1,0 +1,6 @@
+<main class="main-content">  
+  <app-slider [page]="'academy'" [image]="'url(assets/img/slider/mobile3.jpg)'" [config]="config"></app-slider>
+  <app-kids-academy [config]="config"></app-kids-academy>
+  <app-packages [config]="config" [subscriptions]="subscriptions" *ngIf="subscriptions?.length" (onProductSelected)="onBuyProduct($event)"></app-packages>
+  <app-programs [section]="'programs'" [page]="'academy'" [config]="config" [programs]="programs" (onProgramSelected)="onBuyProgram($event)"></app-programs>
+</main>

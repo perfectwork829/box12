@@ -1,0 +1,26 @@
+<!--== Start Subscriber Area ==-->
+<section id="{{section}}-section" class="subscribers-default-area">
+  <div class="container">    
+    <!-- <div class="divider"></div> -->
+    <div class="row">
+      <div class="col-md-12 d-flex justify-content-center ">
+        <h3 class="title">{{'subscriptions1' | translate}}</h3>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-lg-4 mb-sm-2" *ngFor="let item of subscribers">
+        <div class="content boxshadow-custom1">
+          <h2 class="m-0">{{item.name | translate :{numbers: item.amount} }}</h2>          
+          <h3 class="custom-color2">${{item.price}}</h3>			
+          <ul class="mt-20 mb-20">
+            <li *ngFor="let li_item of item.descriptions">
+              <i class="la la-check-circle"></i> {{li_item | translate}}
+            </li>		
+          </ul>							
+          <button class="btn_buy_button text-uppercase mb-2">{{'Buy now' | translate}}</button>							
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!--== End Subscriber Area ==-->

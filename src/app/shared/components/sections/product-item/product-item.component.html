@@ -1,0 +1,105 @@
+<!--== Start Product Item Area Wrapper ==-->
+<div class="products-container front-page page-container container pt-sm-60 pt-120">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="page-title mt-5 mb-5 section-title text-center">
+        <h3 class="title-size gwTColor title">
+          <span>
+            {{ 'Products' | translate }}
+          </span>
+        </h3>
+      </div>
+    </div>
+  </div>  
+  <div class="row">
+    <div class="col-lg-12 justify-content-center d-flex">
+      <div class="select-product-tab-panel left-button mb-4 mx-auto">
+        <div class="p-1 d-flex">
+          <div class="pt-tab select-product-tab left-button" [ngClass]="{'active' : selected_tab == 1}" (click)="selectTab(1)">
+            {{"Personal_Training" | translate}}
+          </div>
+          <div class="subs-tab select-product-tab left-button" [ngClass]="{'active' : selected_tab == 2}" (click)="selectTab(2)">
+            {{"Subscription" | translate}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>  
+
+  <div class="pts-tab" *ngIf = 'selected_tab == 1'>    
+    <div class="subs-list row">
+      <div class="subs-item col-md-6 col-12" *ngFor="let personalTraining of personalTrainings;let i = index">
+        <div class="left normal">
+          <div class="pbd-child">
+            <div class="personalTrainings-card product-card text-align boxshadow-custom1">          
+              <div *ngIf="!isLangflag">
+                <p class="product_cycle en-text">{{personalTraining.period}} {{personalTraining.period_unit}}</p>
+                <p class="product_price en-text">{{personalTraining.amount_after_vat.toFixed(1) }} {{currency}} / 
+                  <b>{{personalTraining.period_unit}}</b>
+                </p>
+                <p class="product_description en-text">{{personalTraining.english_name}}</p>   
+              </div>
+
+              <div *ngIf="isLangflag">
+                <p class="product_cycle" >{{personalTraining.period}} {{personalTraining.arabic_period_unit}}</p>
+                <p class="product_price" >{{personalTraining.amount_after_vat.toFixed(1) }} {{currency}} / 
+                  <b> {{personalTraining.arabic_period_unit}}</b>
+                </p>
+                <p class="product_description" *ngIf="isLangflag">{{personalTraining.arabic_name}}</p>    
+              </div>              
+              <div class="mt-3 apply-btn" (click)="onSubscriptionSelected.emit(personalTraining)">                
+                <div class="btn_subscription_container text-center">
+                  <div class="pbd-child">
+                    <div class="btn btn-subscribe p-2 w-100">{{'buy_subscription' | translate}}</div>
+                  </div> 
+                </div>  
+              </div>          
+            </div>
+          </div> 
+        </div>       
+      </div>
+    </div>
+    <div *ngIf="!personalTrainings.length">
+      <p class="text-center">{{'no_training_available' | translate }}</p>
+    </div>
+  </div>
+  <div class="subs-tab" *ngIf = 'selected_tab == 2'>
+    <div class="subs-list row">
+      <div class="subs-item col-md-6 col-12" *ngFor="let subscription of subscriptions;let i = index">
+        <div class="left normal">
+          <div class="pbd-child">
+            <div class="personalTrainings-card product-card text-align boxshadow-custom1">   
+              <div *ngIf="isLangflag">
+                <p class="product_cycle en-text">{{subscription.period}} {{subscription.arabic_period_unit}}</p>
+                <p class="product_price en-text">{{subscription.amount_after_vat.toFixed(1) }} {{currency}} / <b> {{subscription.arabic_period_unit}}</b></p>
+                <p class="product_description en-text">{{subscription.arabic_name}}</p>    
+                <p class="product_cycle ar-text d-none">{{subscription.period}} {{subscription.arabic_period_unit}}</p>
+                <p class="product_price ar-text d-none">{{subscription.amount_after_vat.toFixed(1) }} {{currency}} / <b> {{subscription.arabic_period_unit}}</b></p>
+                <p class="product_description ar-text d-none">{{subscription.arabic_description}}</p>  
+              </div>       
+              <div *ngIf="!isLangflag">
+                <p class="product_cycle en-text">{{subscription.period}} {{subscription.period_unit}}</p>
+                <p class="product_price en-text">{{subscription.amount_after_vat.toFixed(1) }} {{currency}} / <b> {{subscription.period_unit}}</b></p>
+                <p class="product_description en-text">{{subscription.english_name}}</p>    
+                <p class="product_cycle ar-text d-none">{{subscription.period}} {{subscription.period_unit}}</p>
+                <p class="product_price ar-text d-none">{{subscription.amount_after_vat.toFixed(1) }} {{currency}} / <b> {{subscription.period_unit}}</b></p>
+                <p class="product_description ar-text d-none">{{subscription.english_description}}</p>  
+              </div>                  
+              <div class="mt-3 apply-btn" (click)="onSubscriptionSelected.emit(subscription)"> 
+                <div class="btn_subscription_container">
+                  <div class="pbd-child">
+                    <div class="btn btn-subscribe p-2 w-100">{{'buy_subscription' | translate}}</div>
+                  </div> 
+                </div>  
+              </div>          
+            </div>
+          </div> 
+        </div>       
+      </div>
+    </div>
+    <div *ngIf="!subscriptions.length">
+      <p class="text-center">{{'no_product_available' | translate}}</p>
+    </div>
+  </div>
+</div>
+<!--== End Product Item Area Wrapper ==-->

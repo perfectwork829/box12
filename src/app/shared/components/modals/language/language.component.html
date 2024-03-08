@@ -1,0 +1,42 @@
+<!--== Start Language modal ==-->
+<div class="modal-header">
+  <h4 class="modal-title text-primary">
+    <img class="logo-main" src="assets/img/logo.png" alt="Logo" />
+  </h4>
+  <button type="button" class="btn btn-dark" (click)="onClose()" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+    <div class="account-language-area p-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-7 m-auto">
+            <div class="language-bottom">
+              <div class="language-form-content tab-content">
+                <div class="tab-pane fade show active">
+                  <div class="language-form">
+                    <div class="language-form-wrapper">
+                      <div class="row">
+                        <div class="col-12">
+                          <h4 class="text-center">{{'Select Language' | translate}}</h4>
+                        </div>
+                      </div>
+                      <div class="row mt-3">
+                        <div class="col-md-12 mb-2" *ngFor="let language of config.availableLanguages">
+                          <button class="text-uppercase mb-2 mt-20" (click)="onClose(language)" [ngClass]="{'btn_buy_button': language.code === config.selectedLanguage?.code, 'btn_other_lang': language.code !== config.selectedLanguage?.code}">
+                            {{language.name}}
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<!--== End Language modal ==-->

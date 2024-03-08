@@ -1,0 +1,397 @@
+
+label {
+  color: $headings-color;
+  font-size: $small-font-size;
+}
+
+// placeholder specific scss
+.form-control {
+  &::placeholder {
+    transition: all 0.2s ease;
+  }
+
+  &:focus {
+    &::placeholder {
+      transform: translate(5px);
+      transition: all 0.2s ease;
+    }
+    &:valid,
+    &.is-valid {
+      box-shadow: $input-focus-box-shadow;
+    }
+  }
+}
+
+.form-control-plaintext {
+  &:focus {
+    outline: none;
+  }
+}
+
+
+.valid-tooltip,
+.invalid-tooltip {
+  top: 102%;
+  left: 5px;
+}
+
+/***************
+* Form Group
+***************/
+
+// input group !important for overriding the dark style
+.input-group {
+  &:not(.bootstrap-touchspin):focus-within {
+    box-shadow: $input-focus-box-shadow;
+    border-radius: 0;
+    .form-control,
+    .input-group-text {
+      border-color: $primary;
+      box-shadow: none;
+
+      &.is-valid {
+        border-color: $success;
+      }
+
+      &.is-invalid {
+        border-color: $danger;
+      }
+    }
+  }
+  &.is-valid {
+    .input-group-text {
+      border-color: $success !important;
+    }
+    &:not(.bootstrap-touchspin):focus-within {
+      .input-group-text {
+        border-color: $success;
+      }
+    }
+  }
+  &.is-invalid {
+    .input-group-text {
+      border-color: $danger !important;
+    }
+    &:not(.bootstrap-touchspin):focus-within {
+      .input-group-text {
+        border-color: $danger;
+      }
+    }
+  }
+
+  &.disabled {
+    .input-group-text {
+      background-color: $input-disabled-bg;
+    }
+  }
+
+  &.round {
+    .form-control,
+    .input-group-text,
+    &:focus-within {
+      @include border-radius(0);
+    }
+  }
+  &.square {
+    .form-control,
+    .input-group-text,
+    &:focus-within {
+      @include border-radius(0);
+    }
+  }
+  &.round,
+  &.square {
+    .input-group-prepend {
+      .input-group-text {
+        border-radius: 0;
+      }
+    }
+    .input-group-append {
+      .input-group-text {
+        border-radius: 0;
+      }
+    }
+    .form-control {
+      &:not(:first-child) {
+        border-radius: 0;
+      }
+      &:not(:last-child) {
+        border-radius: 0;
+      }
+    }
+  }
+  &.square {
+    .form-control,
+    .input-group-text {
+      @include border-radius(0);
+    }
+  }
+}
+
+.input-group-text {
+  @include transition($input-transition);
+}
+
+.input-group-prepend {
+  border-radius: 0;
+  .input-group-text {
+    border-right: 0;
+    border-radius: 0;
+  }
+}
+
+.input-group-append {
+  .input-group-text {
+    border-left: 0;
+    height: 50px;
+    border-radius: 0;
+  }
+  &:not(:last-child) .input-group-text {
+    border-right: 0;
+  }
+}
+
+// input group merge
+.input-group-merge {
+  .form-control {
+    &:not(:first-child) {
+      padding-left: 0;
+      border-left: 0;
+    }
+
+    &:not(:last-child) {
+      padding-right: 0;
+      border-right: 0;
+    }
+
+    &.is-valid {
+      ~ .input-group-append {
+        .input-group-text {
+          border-color: $success;
+        }
+      }
+    }
+  }
+  .input-group-prepend {
+    ~ .form-control.is-valid {
+      .input-group-text & {
+        border-color: $success;
+      }
+    }
+  }
+}
+
+// Text area line height
+textarea {
+  &.form-control {
+    line-height: 1.6rem;
+    padding: 0.8rem 1rem !important;
+  }
+
+  &.form-control-sm {
+    padding: 0.4rem 0.857rem !important;
+  }
+
+  &.form-control-lg {
+    padding: 1rem 1.143rem !important;
+  }
+}
+
+// Used for Card - Check it and remove if not used
+.form-actions {
+  border-top: 1px solid darken($body-bg, 10%);
+  padding: 20px 0;
+  margin-top: 20px;
+
+  &.filled {
+    background-color: $body-bg;
+  }
+  &.center {
+    text-align: center;
+  }
+  &.right {
+    text-align: right;
+  }
+
+  &.top {
+    border-top: 0;
+    border-bottom: 1px solid darken($body-bg, 10%);
+    margin-top: 0;
+    margin-bottom: 20px;
+  }
+
+  @include media-breakpoint-down(sm) {
+    .buttons-group {
+      float: left !important;
+      margin-bottom: 10px;
+    }
+  }
+}
+
+// Form-horizontal layout
+.form-horizontal {
+  .form-group {
+    @include media-breakpoint-up(sm) {
+      .label-control {
+        text-align: right;
+      }
+    }
+  }
+}
+
+// Select Inputs Specific SCSS
+select.form-control {
+  &.form-control-lg {
+    background-position: calc(100% - 12px) 16px, calc(100% - 20px) 16px, 100% 0;
+  }
+  &.form-control-sm {
+    background-position: calc(100% - 12px) 8px, calc(100% - 20px) 8px, 100% 0;
+  }
+}
+
+
+
+
+/* Floating label Group */
+.form-label-group {
+  position: relative;
+
+  // Form-Control-Large in Floating Label Group
+  .form-control-lg {
+    ~ label {
+      font-size: $input-font-size;
+      padding: 1rem;
+    }
+  }
+
+  // Form-label
+  > label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    transition: all 0.25s ease-in-out;
+    padding: 0.6rem;
+    pointer-events: none;
+    cursor: text;
+    color: rgba($black, 0.4);
+    font-size: 0.7rem;
+    opacity: 0;
+  }
+  // form-input
+  > input,
+  textarea {
+    // from-input on focus change label color
+    &:focus,
+    &:not(:active) {
+      &:not(:placeholder-shown) ~ label {
+        color: rgba($primary, 1) !important;
+        transition: all 0.25s ease-in-out;
+        opacity: 1;
+      }
+    }
+    &:not(:focus) {
+      &:not(:placeholder-shown) ~ label {
+        color: rgba($black, 0.4) !important;
+      }
+    }
+    // form-label after entering text in input box
+    &:not(:placeholder-shown) ~ label {
+      padding: 0.25rem 0;
+      top: -20px;
+      left: 3px;
+    }
+
+    &.form-control-lg:not(:placeholder-shown) ~ label {
+      top: -23px;
+    }
+
+    &.form-control-sm:not(:placeholder-shown) ~ label {
+      top: -18px;
+    }
+  }
+}
+
+
+
+/* Textarea with Counter */
+.textarea-counter-value {
+  background-color: $primary;
+  color: $white;
+  padding: 1px 6px;
+  font-size: 0.6rem;
+  border-radius: 0;
+  margin-right: 1rem;
+}
+
+//  Number Input style
+.btn.disabled-max-min,
+.btn.disabled-max-min:focus,
+.btn.disabled-max-min:active {
+  background-color: rgba($black, 0.5) !important;
+  cursor: default;
+}
+
+// disabled number input
+.bootstrap-touchspin,
+.bootstrap-touchspin {
+  &.disabled-touchspin {
+    .bootstrap-touchspin-down,
+    .bootstrap-touchspin-up {
+      border-color: transparent !important;
+    }
+  }
+}
+
+/* Number Type Input Box Scss for - Remove arrow on hover */
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+
+// IE Specific CSS
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+  // floating Label Group
+  .form-label-group {
+    label {
+      display: none;
+    }
+  }
+
+  // Bootstrap Select
+  select.form-control {
+    &:not([multiple='multiple']) {
+      background: none;
+    }
+  }
+}
+
+// Date & Time Picker - Form Control Bg color
+.picker__input {
+  &.form-control {
+    background-color: $white;
+  }
+}
+
+// Autofill style
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px $white inset !important;
+  -webkit-text-fill-color: $body-color !important;
+}
+
+
+html[dir="rtl"]{
+  .input-group-append .input-group-text {
+    border: var(--bs-border-width) solid var(--bs-border-color);
+    border-right: 0;
+  }
+  .input-group-merge .form-control:not(:last-child) {
+    border: var(--bs-border-width) solid var(--bs-border-color);
+    padding-right: 20px;
+    padding-left: 0;
+    border-left: 0;
+    border-radius: 0;
+  }
+}

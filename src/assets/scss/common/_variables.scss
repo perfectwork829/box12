@@ -1,0 +1,121 @@
+//== Typography
+//
+//## Font and Color for body text, headings, and more.
+$font-current-theme1:	 Josefin Sans;
+$font-current-theme2:	 Brandon Grotesque;
+$font-current-theme3:	 Josefin Sans;
+
+$body-font:				    $font-current-theme2;
+$heading-font:			  $font-current-theme1;
+$secondary-font:		  $font-current-theme1;
+
+$font-size-base: 1rem !default;
+
+$font-weight-light:           300;
+$font-weight-normal:          400;
+$font-weight-medium:          500;
+$font-weight-semi-bold:       600;
+$font-weight-bold:            700;
+$font-weight-extra-bold:      800;
+$font-weight-black:           900;
+
+// heading font weight
+$heading-font-weight:     $font-weight-bold;
+
+// body line height
+$body-line-height:            1.75;
+
+// heading line height
+$heading-line-height:         1.2;
+
+// body color
+$body-color:            #1D242D;
+
+// heading color
+$theme-color-primary: #2E3642;
+
+// theme color
+$theme-color: #B89F65;
+
+$theme-color2:		#f8f3f0;
+$theme-color3:		#1b1b1b;
+$theme-color4:		#252525;
+$theme-tab-background: #f9f6f1;
+$icon-color:      #b09a65;
+$theme-color-secondary: #F4F4F6;
+$theme-color-text: #1D242D;
+$theme-color-6f3fdf42: #7A7A7A;
+$theme-color-b1ef098: #61CE70;
+$theme-color-5cb828d6: #23A455;
+$theme-color-white: #FFF;
+$theme-color-info:  #3dd5f3;
+
+// common color
+$banner_color:    #f9f9f9;
+$color_text:      #1D242D;
+$btn_color:       #090909;
+$accent_color:    #B89F65;
+$black:					  #000;
+$black-111:				#111;
+$black-222:				#222;
+$black-333:				#333;
+$black-444:				#444;
+$black-555:				#555;
+$black-666:				#666;
+$black-777:				#777;
+$black-888:				#888;
+$black-999:				#999999;
+$black-45:				#454545;
+
+$white:			 		   #fff;
+$white-f1:			 	 #f1f1f1;
+$white-f2:			 	 #f2f2f2;
+$white-f3:			 	 #f3f3f3;
+$white-f4:			 	 #f4f4f4;
+$white-f5:			 	 #f5f5f5;
+$white-f6:			 	 #f6f6f6;
+$white-f7:			 	 #f7f7f7;
+$white-f8:			 	 #f8f8f8;
+$white-f9:			 	 #f9f9f9;
+$white-fa:			 	 #fafafa;
+$white-fb:			 	 #fbfbfb;
+$white-fc:			 	 #fcfcfc;
+$white-fd:			 	 #fdfdfd;
+$white-fe:			 	 #fefefe;
+$gray-light:			 #ddd;
+$gray-lighter:		 #eee;
+$gray-ccc:         #ccc;
+$grey-black:       #1b1b1b;
+$grey-white:       #FAFAFAF7;
+$grey-dark:        #8E8D91;
+$grey-custom:      #6b5a5a23;
+$red_grey:         #b6361a;
+$red_danger:       #BF2626;
+$free_danger:      #f95f2e;
+$grey_cancel:      #6e7881;
+$green_white:      #0dcaf0;
+
+//== Responsive Media Query Variables
+//
+
+$xxl-device:   'only screen and (min-width: 1400px)';
+$xl-device:    'only screen and (max-width: 1399px)';
+$lg-device:    'only screen and (max-width: 1199px)';
+$md-device:    'only screen and (max-width: 991px)';
+$sm-device:    'only screen and (max-width: 767px)';
+$xs-device:    'only screen and (max-width: 575px)';
+$xxs-device:   'only screen and (max-width: 479.98px)';
+$xss-device:   'only screen and (max-width: 359.98px)';
+
+$xl-down-device:    'only screen and (min-width: 1200px)';
+$lg-down-device:    'only screen and (min-width: 992px)';
+
+
+$close-font-size: $font-size-base * 2 !default;
+
+$content-padding: 2rem !default;
+$modal-slide-in-width-sm: 25rem !default;
+
+$modal-slide-in-width-sm: 25rem !default; // custom
+$modal-slide-in-width: 28rem !default; // custom
+$modal-slide-in-width-lg: 30rem !default; // custom
